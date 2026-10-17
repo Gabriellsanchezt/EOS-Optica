@@ -13,8 +13,12 @@ class Faq
     {
         return [
             [
-                'question' => '¿El examen visual de optometría tiene algún costo?',
-                'answer'   => 'En EOS Óptica contamos con jornada permanente de Examen Visual Gratuito de lunes a sábado en el turno de la tarde. Nuestro optometrista evalúa tu agudeza visual y te entrega tu presupuesto sin compromiso.',
+                'question' => '¿El examen optométrico tiene algún costo?',
+                'answer'   => 'El Examen Optométrico es Sin Costo solo y cuando realices la compra de tus lentes en nuestra tienda. Atendemos de lunes a sábado en el turno de la tarde.',
+            ],
+            [
+                'question' => '¿Qué diferencias existen entre los cristales Progresivos Keten de Gama Baja, Media y Alta?',
+                'answer'   => 'Los Progresivos Keten te permiten enfocar de lejos, distancia intermedia (computadora) y cerca sin líneas visibles. La Gama Baja ofrece un corredor progresivo estándar; la Gama Media amplía la zona intermedia disminuyendo las aberraciones laterales; y la Gama Alta (tecnología digital FreeForm HD) proporciona el campo visual más amplio y nítido con adaptación inmediata.',
             ],
             [
                 'question' => '¿Cuál es la diferencia entre los cristales Antirreflejo Blue y Foto Blue?',
@@ -22,15 +26,15 @@ class Faq
             ],
             [
                 'question' => '¿Qué días y en qué turno se realizan las consultas y atenciones?',
-                'answer'   => 'Todas nuestras evaluaciones y citas se atienden en el turno de la tarde: de lunes a sábado para Examen Visual Gratuito (Optometría) y asesoría de monturas, y los días lunes y miércoles (previa cita) para Consulta Oftalmológica Especializada.',
+                'answer'   => 'Todas nuestras evaluaciones y citas se atienden en el turno de la tarde: de lunes a sábado para Examen Optométrico (sin costo con la compra en tienda) y asesoría de monturas, y los días lunes y miércoles (previa cita) para Consulta Oftalmológica Especializada.',
             ],
             [
                 'question' => '¿Dónde están ubicados exactamente en Barquisimeto?',
                 'answer'   => 'Estamos ubicados en el centro de Barquisimeto: Carrera 19 esquina con Calle 35, Edificio Carache, Planta Baja, Locales 3 y 4, Estado Lara.',
             ],
             [
-                'question' => '¿Puedo llevar mi propia fórmula médica o montura para montar solo los cristales?',
-                'answer'   => 'Sí. Si ya cuentas con una fórmula emitida recientemente por tu especialista o tienes una montura en buen estado, elaboramos y adaptamos tus cristales de visión sencilla, bifocales o progresivos.',
+                'question' => '¿Puedo llevar mi propia fórmula médica para elaborar mis cristales?',
+                'answer'   => 'Sí. Si ya cuentas con una fórmula emitida recientemente por tu especialista, elaboramos y adaptamos tus cristales de visión sencilla, bifocales o Progresivos Keten (Baja, Media o Alta Gama).',
             ],
         ];
     }

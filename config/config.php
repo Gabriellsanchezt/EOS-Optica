@@ -6,12 +6,13 @@ return [
     'app' => [
         'name'        => 'EOS Óptica',
         'tagline'     => 'Salud Visual, Monturas y Oftalmología en Barquisimeto',
-        'subtagline'  => 'Optometría Computarizada • Cristales AR Blue & Foto Blue • Consulta Oftalmológica',
-        'description' => 'EOS Óptica en Barquisimeto (Carrera 19 esquina con Calle 35, Edificio Carache). Examen visual gratuito, consultas oftalmológicas integrales, cristales Antirreflejo Blue, Foto Blue y monturas de tendencia.',
+        'subtagline'  => 'Optometría Computarizada • AR Blue, Foto Blue & Progresivos Keten • Consulta Oftalmológica',
+        'description' => 'EOS Óptica en Barquisimeto (Carrera 19 esquina con Calle 35, Edificio Carache). Examen optométrico sin costo con la compra en tienda, consultas oftalmológicas, cristales Antirreflejo Blue, Foto Blue, Progresivos Keten y monturas.',
         'base_url'    => null, // Auto-detectado dinamicamente
         'year'        => date('Y'),
         'logo_light'  => 'assets/img/logo-eos-white.jpeg',
         'logo_dark'   => 'assets/img/logo-eos-black.jpeg',
+        'hero_image'  => 'assets/img/FACHADA.jpeg',
     ],
 
     'clinical' => [
@@ -21,7 +22,7 @@ return [
         'ophtha_hours' => 'Turno de la Tarde (Previa Cita)',
         'optom_days'   => 'Lunes a Sábado',
         'optom_shift'  => 'Atención en Turno de la Tarde',
-        'optom_cost'   => 'Examen Visual Gratuito',
+        'optom_cost'   => 'Sin Costo (con la compra en tienda)',
     ],
 
     'whatsapp' => [

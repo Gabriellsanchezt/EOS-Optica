@@ -260,8 +260,9 @@ body {
 
 .hero-main-img {
   width: 100%;
-  height: 500px;
+  height: 520px;
   object-fit: cover;
+  object-position: center 62%;
   filter: contrast(1.04);
 }
 
@@ -516,7 +517,82 @@ body {
   color: var(--eos-white);
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  z-index: 2;
+  z-index: 4;
+}
+
+/* Progresivos Keten (Baja, Media y Alta Gama) en Laboratorio Interactivo */
+.keten-selector-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+}
+
+.keten-tier-btn {
+  min-height: 82px;
+}
+
+.keten-stage-pill {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--eos-white);
+}
+
+.keten-progressive-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.keten-aberration {
+  height: 100%;
+  width: 30%;
+  background: radial-gradient(circle at center, rgba(10, 10, 10, 0.42) 0%, rgba(255, 255, 255, 0.24) 100%);
+  backdrop-filter: blur(5px);
+  transition: width 0.35s ease, backdrop-filter 0.35s ease, opacity 0.35s ease;
+}
+
+.keten-aberration-left {
+  border-right: 1.5px dashed rgba(255, 255, 255, 0.65);
+  clip-path: polygon(0 0, 72% 0, 100% 48%, 85% 100%, 0 100%);
+}
+
+.keten-aberration-right {
+  border-left: 1.5px dashed rgba(255, 255, 255, 0.65);
+  clip-path: polygon(28% 0, 100% 0, 100% 100%, 15% 100%, 0 48%);
+}
+
+.keten-zones-map {
+  position: absolute;
+  inset: 10px 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.keten-zone-tag {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--eos-white);
+  background: rgba(10, 10, 10, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+}
+
+.keten-zone-mid {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--eos-black);
+}
+
+.keten-legend-bar {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .stage-caption-bar {

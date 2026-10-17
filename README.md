@@ -1,7 +1,7 @@
-# EOS Óptica — Plataforma Clínica Visual, Simulador Óptico & Sistema de Citas
+# EOS Óptica — Plataforma de Oftalmología, Laboratorio Óptico Interactivo & Sistema de Citas
 
-> **Portal Web Oftalmológico y Sistema de Agendamiento en Arquitectura MVC con PHP 8 & Bootstrap 5**  
-> Optometría Computarizada, Cristales Antirreflejo Blue & Foto Blue, Catálogo de Monturas y Consulta Oftalmológica Integral.  
+> **Portal Web de Oftalmología y Óptica en Arquitectura MVC con PHP 8 & Bootstrap 5**  
+> Optometría Computarizada, Cristales Antirreflejo Blue, Foto Blue & Progresivos Keten (Gama Baja, Media y Alta), Catálogo de Monturas y Consulta Oftalmológica Integral.  
 > **Ubicación:** Carrera 19 esquina con Calle 35, Edificio Carache, PB Locales 3 y 4, Barquisimeto, Estado Lara, Venezuela.  
 > **WhatsApp Oficial:** [+58 412-9515387](https://wa.me/584129515387)  
 > **Instagram:** [@eosoptica](https://www.instagram.com/eosoptica/)
@@ -12,18 +12,20 @@
 
 **EOS Óptica** es una aplicación web diseñada para digitalizar la experiencia de atención al paciente y asesoría óptica de la sede física de **EOS Óptica en Barquisimeto**. El sistema resuelve tres necesidades reales del negocio en una sola interfaz:
 
-1. **Educación Visual Interactiva (Simulador de Cristales)**: Permite que el paciente comprenda visualmente y en tiempo real la diferencia entre un **Cristal Convencional**, un **Cristal Antirreflejo Blue** (bloqueo de luz azul de pantallas) y un **Cristal Foto Blue** (fotocromático inteligente que se oscurece según el nivel de radiación solar UV).
+1. **Educación Visual Interactiva (Laboratorio Interactivo EOS)**: Permite que el paciente comprenda visualmente y en tiempo real la diferencia entre tratamientos ópticos (**Cristal Convencional**, **Antirreflejo Blue** y **Foto Blue** fotocromático) y compare las 3 gamas de **Cristales Progresivos Keten (Gama Baja, Gama Media y Gama Alta)** visualizando el ancho del corredor progresivo (Lejos, Intermedia y Cerca) y la reducción de distorsión lateral.
 2. **Exhibición de Catálogo con Fichas Técnicas**: Presenta las líneas de monturas (*Tendencia & Acetato*, *Ejecutivas & Metal*, *Sol & Foto Blue*, *Juvenil & TR90*) con filtrado instantáneo sin recargar la página y un visor modal con especificaciones de calibre, puente, varilla, material y tipo de rostro ideal.
-3. **Gestión y Agendamiento Clínico Inteligente**: Automatiza la recepción de solicitudes para **Examen Visual Gratuito (Optometría)** y **Consulta Oftalmológica Especializada (Previa Cita)**, validando reglas de negocio reales (días hábiles por especialidad, turno vespertino fijo, validación estricta de cédula e identidad) antes de generar un ticket único respaldado en el servidor y conectado con WhatsApp.
+3. **Gestión y Agendamiento Inteligente**: Automatiza la recepción de solicitudes para **Examen Optométrico (Sin Costo solo y cuando compren en tienda)** y **Consulta Oftalmológica Especializada (Previa Cita)**, validando reglas de negocio reales (días hábiles por especialidad, turno vespertino fijo, validación estricta de cédula e identidad) antes de generar un ticket único respaldado en el servidor y conectado con WhatsApp.
 
 ---
 
 ## Módulos y Funcionalidades Principales
 
-### 1. Simulador Interactivo de Tecnología Óptica (`AR Blue` vs. `Foto Blue` vs. `Convencional`)
-- **Comparador en Vivo**: El usuario alterna entre los tres tratamientos ópticos ofrecidos por el laboratorio de EOS Óptica.
+### 1. Laboratorio Interactivo EOS (`AR Blue`, `Foto Blue` y `Progresivos Keten`)
+- **Comparador de Tratamientos y Multifocales en Vivo**:
+  - **Tratamientos Digitales y Fotocromáticos**: Alterna entre *Antirreflejo Blue*, *Foto Blue* y *Cristal Convencional*.
+  - **Progresivos Keten (Gama Baja, Media y Alta)**: Simula gráficamente sobre los cristales las zonas de enfoque (**Lejos, Intermedia y Cerca**) y las áreas de aberración periférica lateral, mostrando cómo se amplía el canal visual desde la Gama Baja (42%), pasando por la Gama Media Digital (68%), hasta la Gama Alta FreeForm HD (92%).
 - **Control Deslizable de Radiación UV (0% a 100%)**: Simula el paso desde un entorno de oficina interior hasta el sol radiante de Barquisimeto, oscureciendo dinámicamente los lentes cuando está activo el modo **Foto Blue** o mostrando el destello antirreflejo selectivo en el modo **AR Blue**.
-- **Métricas Técnicas Dinámicas**: Actualiza barras de progreso con porcentajes de *Bloqueo de Luz Azul Digital*, *Reducción de Reflejos Nocturnos* y *Oscurecimiento Solar Automático*, junto con un botón de cotización directa para el cristal seleccionado.
+- **Métricas Técnicas Dinámicas**: Actualiza tanto las etiquetas como las barras de progreso según el tipo de cristal elegido y genera el enlace de cotización directa para WhatsApp.
 
 ### 2. Catálogo Interactivo de Monturas con Modal de Ficha Técnica
 - **Filtrado Dinámico por Categoría**: Clasificación instantánea entre monturas de acetato, metálicas ejecutivas, solares UV400 y monturas flexibles TR90 para niños/jóvenes.
@@ -34,13 +36,13 @@
   - Dimensiones milimétricas (Calibre, Puente y Varilla).
 - **Precarga Inteligente al Formulario**: Desde la ficha técnica, el botón *"Agendar con esta montura"* cierra el modal, selecciona automáticamente el servicio en el formulario inferior, escribe el modelo exacto en las observaciones y desplaza suavemente la pantalla hacia la reserva.
 
-### 3. Unidad Clínica de Oftalmología y Triaje Visual
+### 3. Unidad de Oftalmología y Triaje Visual
 - **Información de Consulta Especializada**: Detalla la atención médica oftalmológica (fondo de ojo, tonometría de presión intraocular, biomicroscopía y despistaje de patologías como catarata, glaucoma y síndrome de ojo seco).
 - **Guía de Síntomas de Alerta**: Orienta al paciente sobre cuándo acudir a valoración médica (cefalea tras usar pantallas, visión borrosa lejana/cercana, ardor o control anual pediátrico y adulto).
 
 ### 4. Motor de Solicitud Rápida de Atención (Reglas de Negocio y Validación Cruzada)
 - **Sincronización Automática de Días según Especialidad**:
-  - Si el paciente elige *Examen Visual Gratuito*, *Cotizar Cristales* o *Catálogo de Monturas*, el sistema habilita los días de **Lunes a Sábado**.
+  - Si el paciente elige *Examen Optométrico (Sin costo por compra en tienda)*, *Cotizar Cristales* o *Catálogo de Monturas*, el sistema habilita los días de **Lunes a Sábado**.
   - Si el paciente selecciona *Consulta Oftalmológica (Previa Cita)*, el sistema filtra y restringe automáticamente el selector **únicamente a Lunes y Miércoles**, impidiendo agendar en días donde no pasa consulta el especialista.
 - **Modalidad Informativa de Turno Vespertino**: Informa de forma fija y clara que todas las evaluaciones y consultas se atienden en el **Turno de la Tarde**, incluyéndolo automáticamente en la orden sin requerir pasos adicionales del usuario.
 - **Validación Cruzada en Tiempo Real y en Servidor**:

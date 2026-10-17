@@ -11,7 +11,7 @@
           <span class="brand-title text-white">EOS <span class="text-secondary-light">ÓPTICA</span></span>
         </div>
         <p class="text-secondary-light mb-3 pe-lg-4">
-          Salud visual integral, jornada permanente de examen visual gratuito, consulta oftalmológica especializada y monturas de tendencia en Barquisimeto, Estado Lara.
+          Salud visual integral, examen optométrico sin costo por la compra de tus lentes en tienda, consulta oftalmológica especializada, cristales Progresivos Keten y monturas en Barquisimeto, Estado Lara.
         </p>
         <div class="d-flex align-items-center gap-3">
           <a href="<?= e((string) config('instagram.url')) ?>" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram de EOS Óptica">
@@ -30,7 +30,7 @@
         <h5 class="text-white fw-bold mb-3 fs-6 text-uppercase tracking-wider">Secciones</h5>
         <ul class="list-unstyled d-flex flex-column gap-2 mb-0 footer-nav-list">
           <li><a href="#servicios"><i class="bi bi-chevron-right small me-1"></i>Servicios Visuales</a></li>
-          <li><a href="#simulador"><i class="bi bi-chevron-right small me-1"></i>Simulador Cristales Blue</a></li>
+          <li><a href="#simulador"><i class="bi bi-chevron-right small me-1"></i>Laboratorio Interactivo EOS</a></li>
           <li><a href="#catalogo"><i class="bi bi-chevron-right small me-1"></i>Catálogo de Monturas</a></li>
           <li><a href="#oftalmologia"><i class="bi bi-chevron-right small me-1"></i>Consulta Oftalmológica</a></li>
           <li><a href="#agendar"><i class="bi bi-chevron-right small me-1"></i>Agendar Cita</a></li>

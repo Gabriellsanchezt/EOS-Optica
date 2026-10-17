@@ -17,28 +17,28 @@
         </h1>
 
         <p class="lead text-secondary mb-4 pe-lg-4">
-          En <strong><?= e((string) config('app.name')) ?></strong> combinamos precisión clínica en optometría y oftalmología con una selección curada de monturas modernas y cristales de tecnología <strong>Antirreflejo Blue</strong> y <strong>Foto Blue</strong>.
+          En <strong><?= e((string) config('app.name')) ?></strong> combinamos precisión en optometría y oftalmología con monturas modernas, cristales <strong>Antirreflejo Blue</strong>, <strong>Foto Blue</strong> y <strong>Progresivos Keten</strong> (Gama Baja, Media y Alta).
         </p>
 
         <div class="d-flex flex-wrap gap-3 mb-5">
-          <a href="#agendar" class="btn btn-eos-primary btn-lg rounded-pill px-4 d-inline-flex align-items-center gap-2" data-select-service="Examen Visual Gratuito">
+          <a href="#agendar" class="btn btn-eos-primary btn-lg rounded-pill px-4 d-inline-flex align-items-center gap-2" data-select-service="Examen Optométrico (Sin costo por compra en tienda)">
             <i class="bi bi-eye"></i>
-            <span>Examen Visual Gratis</span>
+            <span>Agendar Examen Optométrico</span>
           </a>
           <a href="#simulador" class="btn btn-eos-outline btn-lg rounded-pill px-4 d-inline-flex align-items-center gap-2">
             <i class="bi bi-sliders"></i>
-            <span>Simulador de Cristales</span>
+            <span>Laboratorio Interactivo EOS</span>
           </a>
         </div>
 
         <div class="row g-3 pt-4 border-top border-secondary border-opacity-25">
           <div class="col-4">
             <div class="fw-extrabold fs-4 text-dark">Sin Costo</div>
-            <div class="small text-secondary">Examen Optométrico</div>
+            <div class="small text-secondary">Examen Optométrico <span class="d-block" style="font-size: 0.72rem;">(Al comprar en tienda)</span></div>
           </div>
           <div class="col-4 border-start border-secondary border-opacity-25 ps-3">
-            <div class="fw-extrabold fs-4 text-dark">AR & Foto Blue</div>
-            <div class="small text-secondary">Protección UV400 y Digital</div>
+            <div class="fw-extrabold fs-4 text-dark">Blue & Keten</div>
+            <div class="small text-secondary">AR, Foto Blue y Progresivos</div>
           </div>
           <div class="col-4 border-start border-secondary border-opacity-25 ps-3">
             <div class="fw-extrabold fs-4 text-dark"><?= e((string) config('instagram.followers')) ?></div>
@@ -47,23 +47,23 @@
         </div>
       </div>
 
-      <!-- Columna Visual Hero -->
+      <!-- Columna Visual Hero (Fachada Oficial EOS Optica) -->
       <div class="col-lg-6">
         <div class="hero-visual-wrapper position-relative">
           <img
-            src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=1000&q=85"
-            alt="Salud visual y monturas en EOS Óptica Barquisimeto"
+            src="<?= asset((string) config('app.hero_image', 'assets/img/FACHADA.jpeg')) ?>"
+            alt="Fachada de EOS Óptica en Edificio Carache, Carrera 19 con Calle 35, Barquisimeto"
             class="img-fluid rounded-4 shadow-lg hero-main-img"
           >
 
           <!-- Tarjeta Flotante Superior -->
           <div class="hero-float-card float-top d-flex align-items-center gap-3">
             <div class="float-icon-box bg-dark text-white">
-              <i class="bi bi-shield-shaded fs-5"></i>
+              <i class="bi bi-layers-fill fs-5"></i>
             </div>
             <div>
-              <strong class="d-block text-dark small">Cristales Filtro Blue</strong>
-              <span class="text-secondary" style="font-size: 0.78rem;">Bloqueo selectivo de fatiga digital</span>
+              <strong class="d-block text-dark small">Progresivos Keten & Blue</strong>
+              <span class="text-secondary" style="font-size: 0.78rem;">Gama Baja, Media y Alta • Protección UV</span>
             </div>
           </div>
 
@@ -107,16 +107,16 @@
   </div>
 </section>
 
-<!-- Seccion de Servicios Visuales y Clinicos -->
+<!-- Seccion de Servicios Visuales y Oftalmologicos -->
 <section class="py-5 my-lg-4" id="servicios">
   <div class="container">
-    <div class="text-center mx-auto mb-5" style="max-width: 720px;">
+    <div class="text-center mx-auto mb-5" style="max-width: 740px;">
       <span class="eos-eyebrow">Cuidado Visual Integral</span>
       <h2 class="eos-section-title mt-2">
         Todo lo que tus ojos necesitan <span class="serif-accent">en un solo lugar</span>
       </h2>
       <p class="text-secondary mb-0">
-        Desde tu evaluación optométrica gratuita hasta la formulación médica oftalmológica y adaptación de cristales digitales.
+        Examen optométrico sin costo al adquirir tus lentes en tienda, consulta oftalmológica especializada y laboratorio de cristales digitales y progresivos.
       </p>
     </div>
 
@@ -159,16 +159,16 @@
   </div>
 </section>
 
-<!-- Simulador Interactivo de Cristales (AR Blue / Foto Blue / Convencional) -->
+<!-- Laboratorio Interactivo EOS (AR Blue / Foto Blue / Progresivos Keten Baja, Media y Alta) -->
 <section class="eos-simulator-section py-5" id="simulador">
   <div class="container py-lg-4">
-    <div class="text-center mx-auto mb-5" style="max-width: 740px;">
+    <div class="text-center mx-auto mb-5" style="max-width: 780px;">
       <span class="eos-eyebrow eos-eyebrow-dark">Laboratorio Interactivo EOS</span>
       <h2 class="eos-section-title text-white mt-2">
-        Compara la tecnología de nuestros <span class="serif-accent text-white">Cristales Especializados</span>
+        Compara nuestros <span class="serif-accent text-white">Cristales Digitales y Progresivos Keten</span>
       </h2>
       <p class="text-secondary-light mb-0">
-        Selecciona un tratamiento óptico y ajusta la intensidad de radiación exterior (UV) para visualizar el comportamiento real del lente.
+        Prueba el comportamiento de los filtros <strong>AR Blue</strong> y <strong>Foto Blue</strong> ante el sol UV, o compara la amplitud del campo visual de los <strong>Progresivos Keten en Gama Baja, Media y Alta</strong>.
       </p>
     </div>
 
@@ -181,37 +181,71 @@
       <!-- Panel de Controles -->
       <div class="col-lg-5">
         <div class="simulator-panel h-100 p-4 rounded-4 d-flex flex-column justify-content-between gap-4">
+          <!-- 1. Tratamientos Monofocales / Digitales -->
           <div>
-            <label class="form-label text-white fw-bold small text-uppercase tracking-wider mb-3 d-flex align-items-center gap-2">
+            <label class="form-label text-white fw-bold small text-uppercase tracking-wider mb-2 d-flex align-items-center gap-2">
               <i class="bi bi-layers text-white"></i>
-              <span>1. Selecciona la tecnología del cristal</span>
+              <span>1. Tratamientos Ópticos y Protección Digital</span>
             </label>
 
             <div class="d-flex flex-column gap-2" role="tablist">
               <?php foreach ($lenses as $slug => $lens): ?>
-                <button
-                  type="button"
-                  class="lens-selector-btn text-start p-3 rounded-3 d-flex align-items-center gap-3 <?= $slug === 'ar-blue' ? 'active' : '' ?>"
-                  data-lens="<?= e($slug) ?>"
-                >
-                  <div class="lens-selector-icon">
-                    <i class="bi <?= e($lens['icon']) ?> fs-5"></i>
-                  </div>
-                  <div>
-                    <strong class="d-block text-white"><?= e($lens['name']) ?></strong>
-                    <small class="text-secondary-light"><?= e($lens['subtitle']) ?></small>
-                  </div>
-                </button>
+                <?php if (($lens['group'] ?? '') === 'tratamiento'): ?>
+                  <button
+                    type="button"
+                    class="lens-selector-btn text-start p-3 rounded-3 d-flex align-items-center gap-3 <?= $slug === 'ar-blue' ? 'active' : '' ?>"
+                    data-lens="<?= e($slug) ?>"
+                  >
+                    <div class="lens-selector-icon">
+                      <i class="bi <?= e($lens['icon']) ?> fs-5"></i>
+                    </div>
+                    <div>
+                      <strong class="d-block text-white"><?= e($lens['name']) ?></strong>
+                      <small class="text-secondary-light"><?= e($lens['subtitle']) ?></small>
+                    </div>
+                  </button>
+                <?php endif; ?>
               <?php endforeach; ?>
             </div>
           </div>
 
-          <!-- Slider de Radiacion UV -->
+          <!-- 2. Progresivos Keten (Baja, Media y Alta Gama) -->
+          <div class="keten-selector-box p-3 rounded-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label class="form-label text-white fw-bold small text-uppercase tracking-wider mb-0 d-flex align-items-center gap-2">
+                <i class="bi bi-eyeglasses text-white"></i>
+                <span>2. Progresivos Keten (Multifocales)</span>
+              </label>
+              <span class="badge rounded-pill bg-white text-dark fw-bold" style="font-size: 0.7rem;">3 Gamas</span>
+            </div>
+            <p class="text-secondary-light mb-2" style="font-size: 0.78rem;">
+              Compara la amplitud del corredor visual (Lejos, Intermedio y Cerca) y la reducción de distorsión lateral:
+            </p>
+            <div class="row g-2" role="tablist">
+              <?php foreach ($lenses as $slug => $lens): ?>
+                <?php if (($lens['group'] ?? '') === 'keten'): ?>
+                  <div class="col-4">
+                    <button
+                      type="button"
+                      class="lens-selector-btn keten-tier-btn w-100 text-center p-2 rounded-3 d-flex flex-column align-items-center justify-content-center gap-1"
+                      data-lens="<?= e($slug) ?>"
+                    >
+                      <i class="bi <?= e($lens['icon']) ?> text-white fs-5"></i>
+                      <strong class="d-block text-white small"><?= e($lens['tier_label']) ?></strong>
+                      <span class="text-secondary-light" style="font-size: 0.7rem;"><?= e($lens['tier_short']) ?></span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </div>
+          </div>
+
+          <!-- 3. Slider de Radiacion UV -->
           <div>
             <div class="d-flex justify-content-between align-items-center mb-2">
               <label for="sunSlider" class="form-label text-white fw-bold small text-uppercase tracking-wider mb-0 d-flex align-items-center gap-2">
                 <i class="bi bi-sun text-white"></i>
-                <span>2. Exposición Solar Exterior (UV)</span>
+                <span>3. Exposición Solar Exterior (UV)</span>
               </label>
               <span class="badge rounded-pill bg-white bg-opacity-10 text-white border border-secondary" id="sunValueLabel">
                 Interior (20% UV)
@@ -239,7 +273,7 @@
             <div class="d-flex flex-column gap-2 mb-3">
               <div>
                 <div class="d-flex justify-content-between small text-white mb-1">
-                  <span>Bloqueo de Luz Azul Digital</span>
+                  <span id="meterLabel1"><?= e($lenses['ar-blue']['metric_labels']['m1']) ?></span>
                   <span id="meterBlueVal">95%</span>
                 </div>
                 <div class="progress eos-progress">
@@ -249,7 +283,7 @@
 
               <div>
                 <div class="d-flex justify-content-between small text-white mb-1">
-                  <span>Reducción de Reflejos Nocturnos</span>
+                  <span id="meterLabel2"><?= e($lenses['ar-blue']['metric_labels']['m2']) ?></span>
                   <span id="meterGlareVal">92%</span>
                 </div>
                 <div class="progress eos-progress">
@@ -259,7 +293,7 @@
 
               <div>
                 <div class="d-flex justify-content-between small text-white mb-1">
-                  <span>Oscurecimiento Solar Automático (Foto Blue)</span>
+                  <span id="meterLabel3"><?= e($lenses['ar-blue']['metric_labels']['m3']) ?></span>
                   <span id="meterPhotoVal">15%</span>
                 </div>
                 <div class="progress eos-progress">
@@ -286,9 +320,15 @@
       <div class="col-lg-7">
         <div class="simulator-stage rounded-4 h-100 overflow-hidden position-relative">
           <div class="stage-background h-100 d-flex flex-column justify-content-between align-items-center p-4" id="stageBg">
-            <div class="stage-condition-pill d-inline-flex align-items-center gap-2">
-              <i class="bi bi-display text-white" id="stageConditionIcon"></i>
-              <span id="stageConditionBadge">Entorno Digital / Oficina Interior</span>
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
+              <div class="stage-condition-pill d-inline-flex align-items-center gap-2">
+                <i class="bi bi-display text-white" id="stageConditionIcon"></i>
+                <span id="stageConditionBadge">Entorno Digital / Oficina Interior</span>
+              </div>
+              <div class="stage-condition-pill keten-stage-pill d-none align-items-center gap-2" id="ketenStageBadge">
+                <i class="bi bi-layers-half text-white"></i>
+                <span id="ketenStageText">Corredor Progresivo Keten</span>
+              </div>
             </div>
 
             <!-- Montura Simulada en Codigo Puro -->
@@ -296,14 +336,47 @@
               <div class="lens-glass" id="leftLens">
                 <div class="lens-glare-layer" id="leftGlare"></div>
                 <div class="lens-blue-coating" id="leftReflex"></div>
-                <span class="lens-inner-badge"><i class="bi bi-eye me-1"></i>Visión EOS</span>
+                <!-- Overlay de Geometria Progresiva Keten (Izquierdo) -->
+                <div class="keten-progressive-overlay d-none" id="leftKetenOverlay">
+                  <div class="keten-aberration keten-aberration-left"></div>
+                  <div class="keten-aberration keten-aberration-right"></div>
+                  <div class="keten-zones-map">
+                    <span class="keten-zone-tag">LEJOS</span>
+                    <span class="keten-zone-tag keten-zone-mid">INTERMEDIA</span>
+                    <span class="keten-zone-tag">CERCA</span>
+                  </div>
+                </div>
+                <span class="lens-inner-badge" id="leftLensBadge"><i class="bi bi-eye me-1"></i>Visión EOS</span>
               </div>
               <div class="glasses-nose-bridge"></div>
               <div class="lens-glass" id="rightLens">
                 <div class="lens-glare-layer" id="rightGlare"></div>
                 <div class="lens-blue-coating" id="rightReflex"></div>
-                <span class="lens-inner-badge"><i class="bi bi-hd me-1"></i>Nitidez HD</span>
+                <!-- Overlay de Geometria Progresiva Keten (Derecho) -->
+                <div class="keten-progressive-overlay d-none" id="rightKetenOverlay">
+                  <div class="keten-aberration keten-aberration-left"></div>
+                  <div class="keten-aberration keten-aberration-right"></div>
+                  <div class="keten-zones-map">
+                    <span class="keten-zone-tag">LEJOS</span>
+                    <span class="keten-zone-tag keten-zone-mid">INTERMEDIA</span>
+                    <span class="keten-zone-tag">CERCA</span>
+                  </div>
+                </div>
+                <span class="lens-inner-badge" id="rightLensBadge"><i class="bi bi-hd me-1"></i>Nitidez HD</span>
               </div>
+            </div>
+
+            <!-- Leyenda interactiva de zonas cuando se activa Progresivo Keten -->
+            <div class="keten-legend-bar d-none flex-wrap justify-content-center align-items-center gap-3 mb-2 px-3 py-2 rounded-pill" id="ketenLegendBar">
+              <span class="small text-white d-inline-flex align-items-center gap-1">
+                <i class="bi bi-check-circle-fill text-white"></i>
+                <span>Centro Nítido: <strong>Lejos • PC • Lectura</strong></span>
+              </span>
+              <span class="text-secondary-light">|</span>
+              <span class="small text-secondary-light d-inline-flex align-items-center gap-1">
+                <i class="bi bi-distribute-horizontal text-white"></i>
+                <span id="ketenCorridorMetric">Amplitud útil: 92%</span>
+              </span>
             </div>
 
             <div class="stage-caption-bar d-flex align-items-center gap-2">
@@ -618,7 +691,7 @@
           <ul class="list-unstyled d-flex flex-column gap-2 mb-0 small text-dark">
             <li class="d-flex align-items-start gap-2">
               <i class="bi bi-check-circle-fill mt-1"></i>
-              <span><strong>Examen Visual Gratuito y Óptica:</strong> Lunes a Sábado.</span>
+              <span><strong>Examen Optométrico y Óptica:</strong> Lunes a Sábado (Examen sin costo solo y cuando compren en tienda).</span>
             </li>
             <li class="d-flex align-items-start gap-2">
               <i class="bi bi-check-circle-fill mt-1"></i>
@@ -679,7 +752,7 @@
             </div>
             <div class="small">
               <strong class="d-block text-dark">Modalidad de Horario: Turno de la Tarde</strong>
-              <span class="text-secondary">Todas nuestras consultas y exámenes visuales se realizan en horario vespertino (por la tarde).</span>
+              <span class="text-secondary">Todas nuestras consultas y exámenes optométricos se realizan en horario vespertino (por la tarde).</span>
             </div>
           </div>
 
@@ -756,9 +829,9 @@
               <div class="input-group">
                 <span class="input-group-text bg-light"><i class="bi bi-eyeglasses"></i></span>
                 <select class="form-select" id="serviceType" name="service_type" required>
-                  <option value="Examen Visual Gratuito">Examen Visual Gratuito (Lunes a Sábado)</option>
+                  <option value="Examen Optométrico (Sin costo por compra en tienda)">Examen Optométrico — Sin costo al comprar en tienda (Lunes a Sábado)</option>
                   <option value="Consulta Oftalmológica (Previa Cita)">Consulta Oftalmológica — Previa Cita (Lunes y Miércoles)</option>
-                  <option value="Cotizar Cristales Antirreflejo Blue / Foto Blue">Cotizar Cristales AR Blue / Foto Blue (Lunes a Sábado)</option>
+                  <option value="Cotizar Cristales (AR Blue / Foto Blue / Progresivos Keten)">Cotizar AR Blue, Foto Blue o Progresivos Keten (Lunes a Sábado)</option>
                   <option value="Ya tengo mi fórmula y quiero cotizar lentes">Ya tengo mi fórmula — Quiero cotizar (Lunes a Sábado)</option>
                   <option value="Consultar catálogo de monturas disponibles">Consultar catálogo de monturas (Lunes a Sábado)</option>
                 </select>
@@ -774,18 +847,18 @@
                 <span class="input-group-text bg-light"><i class="bi bi-calendar-event"></i></span>
                 <select class="form-select" id="preferredDay" name="preferred_day" required>
                   <option value="Lunes (Turno de la Tarde)" data-ophtha="true">Lunes — Óptica y Consulta Oftalmológica</option>
-                  <option value="Martes (Turno de la Tarde)" data-ophtha="false">Martes — Examen Visual y Óptica</option>
+                  <option value="Martes (Turno de la Tarde)" data-ophtha="false">Martes — Examen Optométrico y Óptica</option>
                   <option value="Miércoles (Turno de la Tarde)" data-ophtha="true">Miércoles — Óptica y Consulta Oftalmológica</option>
-                  <option value="Jueves (Turno de la Tarde)" data-ophtha="false">Jueves — Examen Visual y Óptica</option>
-                  <option value="Viernes (Turno de la Tarde)" data-ophtha="false">Viernes — Examen Visual y Óptica</option>
-                  <option value="Sábado (Turno de la Tarde)" data-ophtha="false">Sábado — Examen Visual y Óptica</option>
+                  <option value="Jueves (Turno de la Tarde)" data-ophtha="false">Jueves — Examen Optométrico y Óptica</option>
+                  <option value="Viernes (Turno de la Tarde)" data-ophtha="false">Viernes — Examen Optométrico y Óptica</option>
+                  <option value="Sábado (Turno de la Tarde)" data-ophtha="false">Sábado — Examen Optométrico y Óptica</option>
                 </select>
               </div>
             </div>
 
             <div class="mb-4">
               <label for="clientNotes" class="form-label fw-bold small">Observaciones o detalles de tu fórmula (Opcional)</label>
-              <textarea class="form-control" id="clientNotes" name="client_notes" rows="2" maxlength="350" placeholder="Ej. Deseo cristales con filtro azul para computadora o cita para mi hijo..."></textarea>
+              <textarea class="form-control" id="clientNotes" name="client_notes" rows="2" maxlength="350" placeholder="Ej. Deseo cotizar Progresivos Keten o cristales con filtro azul..."></textarea>
             </div>
 
             <button type="submit" id="bookingSubmitBtn" class="btn btn-eos-primary btn-lg w-100 rounded-pill d-inline-flex align-items-center justify-content-center gap-2">
@@ -821,7 +894,7 @@
               <i class="bi bi-clock me-1 text-white"></i>Atención: Turno de la Tarde
             </span>
             <span class="badge bg-white bg-opacity-10 fw-normal px-3 py-2 rounded-pill">
-              <i class="bi bi-eye me-1 text-white"></i>Examen Visual Gratis
+              <i class="bi bi-eye me-1 text-white"></i>Examen Optométrico Sin Costo (con tu compra en tienda)
             </span>
             <span class="badge bg-white bg-opacity-10 fw-normal px-3 py-2 rounded-pill">
               <i class="bi bi-credit-card me-1 text-white"></i>Múltiples métodos de pago

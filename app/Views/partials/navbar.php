@@ -3,7 +3,7 @@
   <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
     <div class="d-flex align-items-center gap-2">
       <span class="pulse-indicator"></span>
-      <span><strong>Examen Visual Gratuito</strong> • Lunes a Sábado (Turno de la Tarde)</span>
+      <span><strong>Examen Optométrico: Sin Costo</strong> (solo con tu compra en tienda) • Lunes a Sábado (Tarde)</span>
     </div>
     <div class="d-none d-md-flex align-items-center gap-3 eos-topbar-links">
       <a href="<?= e((string) config('location.maps_url')) ?>" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-1">
@@ -44,7 +44,7 @@
           <a class="nav-link" href="#servicios">Servicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#simulador">Tecnología Blue</a>
+          <a class="nav-link" href="#simulador">Laboratorio EOS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#catalogo">Monturas</a>

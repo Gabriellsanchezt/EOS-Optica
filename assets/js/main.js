@@ -38,8 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const rightGlare = document.getElementById('rightGlare');
   const leftReflex = document.getElementById('leftReflex');
   const rightReflex = document.getElementById('rightReflex');
+  const leftKetenOverlay = document.getElementById('leftKetenOverlay');
+  const rightKetenOverlay = document.getElementById('rightKetenOverlay');
+  const leftLensBadge = document.getElementById('leftLensBadge');
+  const rightLensBadge = document.getElementById('rightLensBadge');
+  const ketenStageBadge = document.getElementById('ketenStageBadge');
+  const ketenStageText = document.getElementById('ketenStageText');
+  const ketenLegendBar = document.getElementById('ketenLegendBar');
+  const ketenCorridorMetric = document.getElementById('ketenCorridorMetric');
   const specTitle = document.getElementById('specTitle');
   const specDesc = document.getElementById('specDesc');
+  const meterLabel1 = document.getElementById('meterLabel1');
+  const meterLabel2 = document.getElementById('meterLabel2');
+  const meterLabel3 = document.getElementById('meterLabel3');
   const meterBlue = document.getElementById('meterBlue');
   const meterGlare = document.getElementById('meterGlare');
   const meterPhoto = document.getElementById('meterPhoto');
@@ -54,6 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentLens = 'ar-blue';
 
+  function applyKetenAberration(overlayEl, progConfig) {
+    if (!overlayEl || !progConfig) return;
+    overlayEl.querySelectorAll('.keten-aberration').forEach(sideEl => {
+      sideEl.style.width = `${progConfig.side_width}%`;
+      sideEl.style.backdropFilter = `blur(${progConfig.blur_px}px)`;
+      sideEl.style.opacity = `${progConfig.blur_opacity}`;
+    });
+  }
+
   function updateSimulator() {
     if (!sunSlider || !lensData[currentLens]) return;
 
@@ -62,6 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     specTitle.textContent = info.full_title;
     specDesc.textContent = info.description;
+
+    if (info.metric_labels) {
+      if (meterLabel1) meterLabel1.textContent = info.metric_labels.m1;
+      if (meterLabel2) meterLabel2.textContent = info.metric_labels.m2;
+      if (meterLabel3) meterLabel3.textContent = info.metric_labels.m3;
+    }
 
     meterBlue.style.width = `${info.metrics.blue_block}%`;
     meterGlare.style.width = `${info.metrics.glare_reduction}%`;
@@ -91,34 +117,92 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgBrightness = 0.85 + (uvVal / 100) * 0.35;
     stageBg.style.filter = `brightness(${bgBrightness.toFixed(2)})`;
 
-    if (currentLens === 'ar-blue') {
-      leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
-      rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
-      leftLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
-      rightLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
-      leftReflex.style.opacity = '1';
-      rightReflex.style.opacity = '1';
-      leftGlare.style.opacity = '0.06';
-      rightGlare.style.opacity = '0.06';
-    } else if (currentLens === 'foto-blue') {
-      const darkOpacity = 0.12 + (uvVal / 100) * 0.72;
-      leftLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
-      rightLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
-      leftLens.style.backdropFilter = 'contrast(1.12)';
-      rightLens.style.backdropFilter = 'contrast(1.12)';
-      leftReflex.style.opacity = '0.85';
-      rightReflex.style.opacity = '0.85';
+    // Control de Geometria Progresiva Keten (Baja, Media y Alta Gama)
+    if (info.progressive) {
+      if (leftKetenOverlay) {
+        leftKetenOverlay.classList.remove('d-none');
+        applyKetenAberration(leftKetenOverlay, info.progressive);
+      }
+      if (rightKetenOverlay) {
+        rightKetenOverlay.classList.remove('d-none');
+        applyKetenAberration(rightKetenOverlay, info.progressive);
+      }
+      if (ketenStageBadge) {
+        ketenStageBadge.classList.remove('d-none');
+        ketenStageBadge.classList.add('d-inline-flex');
+      }
+      if (ketenStageText) {
+        ketenStageText.textContent = `Progresivo Keten: ${info.tier_label} (${info.tier_short})`;
+      }
+      if (ketenLegendBar) {
+        ketenLegendBar.classList.remove('d-none');
+        ketenLegendBar.classList.add('d-inline-flex');
+      }
+      if (ketenCorridorMetric) {
+        ketenCorridorMetric.textContent = `Campo útil sin distorsión: ${info.progressive.corridor_pct}%`;
+      }
+      if (leftLensBadge) {
+        leftLensBadge.innerHTML = `<i class="bi bi-eye me-1"></i>${info.progressive.badge_left}`;
+      }
+      if (rightLensBadge) {
+        rightLensBadge.innerHTML = `<i class="bi bi-aspect-ratio me-1"></i>${info.progressive.badge_right}`;
+      }
+
+      leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+      rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+      leftLens.style.backdropFilter = 'contrast(1.16) brightness(1.04)';
+      rightLens.style.backdropFilter = 'contrast(1.16) brightness(1.04)';
+      leftReflex.style.opacity = '0.75';
+      rightReflex.style.opacity = '0.75';
       leftGlare.style.opacity = '0.05';
       rightGlare.style.opacity = '0.05';
     } else {
-      leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-      rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-      leftLens.style.backdropFilter = 'contrast(0.95)';
-      rightLens.style.backdropFilter = 'contrast(0.95)';
-      leftReflex.style.opacity = '0';
-      rightReflex.style.opacity = '0';
-      leftGlare.style.opacity = '0.88';
-      rightGlare.style.opacity = '0.88';
+      if (leftKetenOverlay) leftKetenOverlay.classList.add('d-none');
+      if (rightKetenOverlay) rightKetenOverlay.classList.add('d-none');
+      if (ketenStageBadge) {
+        ketenStageBadge.classList.add('d-none');
+        ketenStageBadge.classList.remove('d-inline-flex');
+      }
+      if (ketenLegendBar) {
+        ketenLegendBar.classList.add('d-none');
+        ketenLegendBar.classList.remove('d-inline-flex');
+      }
+      if (leftLensBadge) {
+        leftLensBadge.innerHTML = '<i class="bi bi-eye me-1"></i>Visión EOS';
+      }
+      if (rightLensBadge) {
+        rightLensBadge.innerHTML = '<i class="bi bi-hd me-1"></i>Nitidez HD';
+      }
+
+      if (currentLens === 'ar-blue') {
+        leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
+        rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
+        leftLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
+        rightLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
+        leftReflex.style.opacity = '1';
+        rightReflex.style.opacity = '1';
+        leftGlare.style.opacity = '0.06';
+        rightGlare.style.opacity = '0.06';
+      } else if (currentLens === 'foto-blue') {
+        const darkOpacity = 0.12 + (uvVal / 100) * 0.72;
+        leftLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
+        rightLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
+        leftLens.style.backdropFilter = 'contrast(1.12)';
+        rightLens.style.backdropFilter = 'contrast(1.12)';
+        leftReflex.style.opacity = '0.85';
+        rightReflex.style.opacity = '0.85';
+        leftGlare.style.opacity = '0.05';
+        rightGlare.style.opacity = '0.05';
+      } else {
+        leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+        rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+        leftLens.style.backdropFilter = 'contrast(0.95)';
+        rightLens.style.backdropFilter = 'contrast(0.95)';
+        leftReflex.style.opacity = '0';
+        rightReflex.style.opacity = '0';
+        leftGlare.style.opacity = '0.88';
+        rightGlare.style.opacity = '0.88';
+      }
     }
   }
 
