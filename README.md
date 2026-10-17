@@ -200,10 +200,10 @@ Fiel a la identidad visual de **EOS Óptica**, la interfaz emplea una paleta est
 - **WhatsApp de Atención**: [+58 412-9515387](https://wa.me/584129515387)
 - **Instagram Oficial**: [@eosoptica](https://www.instagram.com/eosoptica/)
 
-<sub>desarrollado por gabriel sánchez (@gabriellsanchezt)</sub>
+<sub>desarrollado por VectorCraft (@vectorcraft.dev)</sub>
 
 ---
 
 ## Licencia
 
-Este proyecto se distribuye bajo la Licencia **MIT** a nombre de **EOS Óptica** (`desarrollado por gabriel sánchez`). Consulta el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto se distribuye bajo la Licencia **MIT** a nombre de **EOS Óptica** (`desarrollado por VectorCraft (@vectorcraft.dev)`). Consulta el archivo [LICENSE](LICENSE) para más detalles.

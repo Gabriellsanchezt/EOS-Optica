@@ -66,7 +66,7 @@
 
     <div class="pt-4 text-center small text-secondary-light">
       <p class="mb-1">&copy; <?= e((string) config('app.year')) ?> <?= e((string) config('app.name')) ?> (<?= e((string) config('instagram.handle')) ?>). Todos los derechos reservados.</p>
-      <p class="mb-0" style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 0.02em;">desarrollado por <a href="https://github.com/Gabriellsanchezt" target="_blank" rel="noopener noreferrer" class="text-secondary-light text-decoration-none">gabriel sánchez</a></p>
+      <p class="mb-0" style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 0.02em;">desarrollado por VectorCraft (<a href="https://www.instagram.com/vectorcraft.dev/" target="_blank" rel="noopener noreferrer" class="text-secondary-light text-decoration-none">@vectorcraft.dev</a>)</p>
     </div>
   </div>
 </footer>
