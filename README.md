@@ -1,7 +1,7 @@
 # EOS Óptica — Plataforma de Oftalmología, Laboratorio Óptico Interactivo & Sistema de Citas
 
 > **Portal Web de Oftalmología y Óptica en Arquitectura MVC con PHP 8 & Bootstrap 5**  
-> Optometría Computarizada, Cristales Antirreflejo Blue, Foto Blue & Progresivos (Gama Baja, Media y Alta), Catálogo de Monturas y Consulta Oftalmológica Integral.  
+> Optometría Computarizada, Cristales Foto Blue & Progresivos (Gama Baja, Media y Alta), Catálogo de Monturas y Consulta Oftalmológica Integral.  
 > **Ubicación:** Carrera 19 esquina con Calle 35, Edificio Carache, PB Locales 3 y 4, Barquisimeto, Estado Lara, Venezuela.  
 > **WhatsApp Oficial:** [+58 412-9515387](https://wa.me/584129515387)  
 > **Instagram:** [@eosoptica](https://www.instagram.com/eosoptica/)
@@ -12,7 +12,7 @@
 
 **EOS Óptica** es una aplicación web diseñada para digitalizar la experiencia de atención al paciente y asesoría óptica de la sede física de **EOS Óptica en Barquisimeto**. El sistema resuelve tres necesidades reales del negocio en una sola interfaz:
 
-1. **Educación Visual Interactiva (Laboratorio Interactivo EOS)**: Permite que el paciente comprenda visualmente y en tiempo real la diferencia entre tratamientos ópticos (**Cristal Convencional**, **Antirreflejo Blue** y **Foto Blue** fotocromático) y compare con el deslizador las 3 gamas de **Cristales Progresivos (Gama Baja, Gama Media y Gama Alta)** visualizando el ancho del corredor progresivo (Lejos, Intermedia y Cerca) y la reducción de distorsión lateral.
+1. **Educación Visual Interactiva (Laboratorio Interactivo EOS)**: Permite que el paciente comprenda visualmente y en tiempo real la diferencia entre **Cristales Foto Blue** (fotocromáticos con filtro azul), **Cristales Progresivos** (comparando con la barra deslizable entre **Gama Baja, Gama Media y Gama Alta** para ver la amplitud del corredor de lejos, intermedio y cerca y la reducción de distorsión lateral) y un **Cristal Convencional** de referencia.
 2. **Exhibición de Catálogo con Fichas Técnicas**: Presenta las líneas de monturas (*Tendencia & Acetato*, *Ejecutivas & Metal*, *Sol & Foto Blue*, *Juvenil & TR90*) con filtrado instantáneo sin recargar la página y un visor modal con especificaciones de calibre, puente, varilla, material y tipo de rostro ideal.
 3. **Gestión y Agendamiento Inteligente**: Automatiza la recepción de solicitudes para **Examen Optométrico (Sin Costo solo y cuando compren en tienda)** y **Consulta Oftalmológica Especializada (Previa Cita)**, validando reglas de negocio reales (días hábiles por especialidad, turno vespertino fijo, validación estricta de cédula e identidad) antes de generar un ticket único respaldado en el servidor y conectado con WhatsApp.
 
@@ -20,12 +20,14 @@
 
 ## Módulos y Funcionalidades Principales
 
-### 1. Laboratorio Interactivo EOS (`AR Blue`, `Foto Blue` y `Cristales Progresivos`)
+### 1. Laboratorio Interactivo EOS (`Foto Blue` y `Cristales Progresivos`)
 - **Comparador de Tratamientos y Multifocales en Vivo**:
-  - **Tratamientos Digitales y Fotocromáticos**: Alterna entre *Antirreflejo Blue*, *Foto Blue* y *Cristal Convencional*.
-  - **Cristales Progresivos (Gama Baja, Media y Alta)**: Mediante un único botón y la barra deslizable, simula gráficamente sobre los cristales las zonas de enfoque (**Lejos, Intermedia y Cerca**) y las áreas de aberración periférica lateral, mostrando cómo se amplía el canal visual desde la Gama Baja (42%), pasando por la Gama Media Digital (68%), hasta la Gama Alta FreeForm HD (94%).
-- **Control Deslizable de Radiación UV (0% a 100%)**: Simula el paso desde un entorno de oficina interior hasta el sol radiante de Barquisimeto, oscureciendo dinámicamente los lentes cuando está activo el modo **Foto Blue** o mostrando el destello antirreflejo selectivo en el modo **AR Blue**.
-- **Métricas Técnicas Dinámicas**: Actualiza tanto las etiquetas como las barras de progreso según el tipo de cristal elegido y genera el enlace de cotización directa para WhatsApp.
+  - **Cristal Foto Blue vs. Convencional**: Simula el paso desde un entorno de oficina interior hasta el sol radiante de Barquisimeto mediante el control deslizable de radiación UV (`0%` a `100%`), oscureciendo dinámicamente los lentes cuando está activo el modo **Foto Blue**.
+  - **Cristales Progresivos (Gama Baja, Media y Alta)**: Mediante un único botón y la misma barra deslizable, simula gráficamente sobre los cristales las zonas de enfoque (**Lejos, Intermedia y Cerca**) y las áreas de aberración periférica lateral:
+    - **Progresivo • Gama Baja**: *Corredor clásico funcional para lejos, intermedio y cerca* (`42%` de amplitud útil).
+    - **Progresivo • Gama Media**: *Campo intermedio ampliado y menor distorsión lateral* (`68%` de amplitud útil).
+    - **Progresivo • Gama Alta**: *Visión panorámica FreeForm HD y adaptación inmediata* (`94%` de amplitud útil).
+- **Métricas Técnicas Dinámicas**: Actualiza tanto las etiquetas como las barras de progreso según el cristal o gama seleccionada y genera el enlace de cotización directa para WhatsApp.
 
 ### 2. Catálogo Interactivo de Monturas con Modal de Ficha Técnica
 - **Filtrado Dinámico por Categoría**: Clasificación instantánea entre monturas de acetato, metálicas ejecutivas, solares UV400 y monturas flexibles TR90 para niños/jóvenes.
@@ -72,8 +74,8 @@ eosoptica/
 │   │   └── helpers.php                  # config(), base_url(), full_url(), asset() con cache-busting, wa_link(), e()
 │   ├── Models/                          # Capa de Datos y Reglas de Dominio
 │   │   ├── Catalog.php                  # Datos del catálogo de monturas, categorías y fichas técnicas
-│   │   ├── Faq.php                      # Preguntas frecuentes clínicas y ópticas
-│   │   ├── LensTechnology.php           # Parámetros ópticos y métricas del simulador AR Blue / Foto Blue
+│   │   ├── Faq.php                      # Preguntas frecuentes de oftalmología y óptica
+│   │   ├── LensTechnology.php           # Parámetros ópticos y métricas de Foto Blue y Progresivos (Baja/Media/Alta)
 │   │   ├── Ophthalmology.php            # Información de la unidad oftalmológica, procedimientos y síntomas
 │   │   └── Service.php                  # Pilares de valor y servicios principales de la óptica
 │   └── Views/                           # Capa de Presentación (HTML5 + Bootstrap 5.3 + PHP)
@@ -90,10 +92,10 @@ eosoptica/
 │
 ├── assets/                              # Recursos estáticos maestros
 │   ├── css/
-│   │   └── styles.css                   # Sistema de diseño monocromático y estilos del simulador óptico
-│   ├── img/                             # Logos oficiales de EOS Óptica (blanco/negro) e isotipo SVG
+│   │   └── styles.css                   # Sistema de diseño monocromático y estilos del laboratorio interactivo
+│   ├── img/                             # Fachada oficial (FACHADA.jpeg), logos EOS Óptica (blanco/negro) e isotipo SVG
 │   └── js/
-│       └── main.js                      # Controlador frontend: simulador UV, filtros, modal, validaciones y envío triple
+│       └── main.js                      # Controlador frontend: simulador Foto Blue/Progresivos, filtros, modal y envío triple
 │
 ├── config/
 │   └── config.php                       # Configuración centralizada (teléfonos, dirección, horarios, rutas de logos)
