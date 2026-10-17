@@ -305,8 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentCatalogCategory = 'all';
   let isCatalogExpanded = false;
-  const INITIAL_VISIBLE_COUNT = 6;
-  const BLUR_PREVIEW_COUNT = 3;
+  const INITIAL_VISIBLE_COUNT = 8;
+  const BLUR_PREVIEW_COUNT = 4;
 
   function renderCatalogGrid() {
     const matchingItems = [];

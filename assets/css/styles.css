@@ -624,7 +624,7 @@ body {
 }
 
 .frame-img-container {
-  height: 235px;
+  height: 165px;
   overflow: hidden;
   background-color: var(--eos-white);
   border-bottom: 1px solid var(--eos-gray-200);
@@ -634,7 +634,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   background-color: var(--eos-white);
   transition: transform 0.45s ease;
 }
@@ -643,11 +643,45 @@ body {
   transform: scale(1.06);
 }
 
+.catalog-card-badge {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.catalog-card-material {
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+}
+
+.catalog-card-title {
+  font-size: 0.94rem;
+  line-height: 1.25;
+}
+
+.catalog-card-desc {
+  font-size: 0.78rem;
+  line-height: 1.38;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.catalog-card-compat {
+  font-size: 0.73rem;
+}
+
+.catalog-card-btn {
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
 .catalog-item-blurred {
-  max-height: 245px;
+  max-height: 190px;
   overflow: hidden;
   filter: blur(5px);
-  opacity: 0.55;
+  opacity: 0.52;
   pointer-events: none;
   user-select: none;
   transition: filter 0.35s ease, opacity 0.35s ease;
@@ -658,7 +692,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 260px;
+  height: 205px;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,

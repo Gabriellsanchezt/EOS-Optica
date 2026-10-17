@@ -7,7 +7,7 @@ namespace App\Models;
 class Catalog
 {
     /**
-     * Categorias de filtrado para el catalogo de monturas (Multiplos exactos de 3 por fila)
+     * Categorias de filtrado para el catalogo de monturas (4 por fila)
      */
     public static function getCategories(): array
     {
@@ -21,12 +21,12 @@ class Catalog
     }
 
     /**
-     * Listado curado de 18 monturas reales de EOS Optica (9 Caballero + 9 Dama = 6 filas exactas de 3)
+     * Listado curado de 20 monturas reales de EOS Optica (5 filas exactas de 4 monturas)
      */
     public static function all(): array
     {
         return [
-            // === PRIMERAS 6 VISIBLES POR DEFECTO (3 CABALLERO + 3 DAMA) ===
+            // === FILA 1 (4 VISIBLES) ===
             [
                 'id'            => 1,
                 'category'      => 'caballero tendencia',
@@ -34,8 +34,8 @@ class Catalog
                 'badge_class'   => 'eos-badge-black',
                 'material'      => 'Acetato Bicolor • Caballero',
                 'name'          => 'Medici Aviador MDA1010',
-                'description'   => 'Diseño doble puente de inspiración aviador en acetato vino y azul marino con varillas ámbar y bisagras reforzadas.',
-                'compatibility' => 'Apta para Foto Blue y Progresivos',
+                'description'   => 'Doble puente de inspiración aviador en acetato vino y azul marino con bisagras reforzadas.',
+                'compatibility' => 'Foto Blue y Progresivos',
                 'specs'         => [
                     'estructura' => 'Acetato de alta densidad con puente anatómico y alma metálica en varillas',
                     'rostro'     => 'Rostros ovalados, cuadrados y alargados',
@@ -50,10 +50,10 @@ class Catalog
                 'category'      => 'dama tendencia',
                 'badge'         => 'Dama • Destacada',
                 'badge_class'   => 'eos-badge-black',
-                'material'      => 'Acetato Cristal & Turquesa • Dama',
+                'material'      => 'Acetato Cristal • Dama',
                 'name'          => 'Stylos VIP Carey Turquesa',
-                'description'   => 'Montura Cat-Eye con base cristal y acabado superior en carey azul turquesa con varillas metálicas doradas.',
-                'compatibility' => 'Campo visual amplio para Progresivos',
+                'description'   => 'Montura Cat-Eye con base cristal, carey azul turquesa superior y varillas metálicas doradas.',
+                'compatibility' => 'Amplio campo Progresivo',
                 'specs'         => [
                     'estructura' => 'Acetato cristal combinado con carey turquesa y alma dorada labrada',
                     'rostro'     => 'Rostros redondos, ovalados y corazón',
@@ -68,10 +68,10 @@ class Catalog
                 'category'      => 'caballero ejecutivo',
                 'badge'         => 'Caballero • Clásico',
                 'badge_class'   => 'eos-badge-black',
-                'material'      => 'Acetato & Metal Dorado • Caballero',
+                'material'      => 'Acetato & Metal • Caballero',
                 'name'          => 'Browline Ejecutivo MKA003',
-                'description'   => 'Combinación distinguida de marco en acetato negro con puente metálico dorado y plaquetas de ajuste preciso.',
-                'compatibility' => 'Ideal para Progresivos y Foto Blue',
+                'description'   => 'Marco en acetato negro brillante con puente metálico dorado y plaquetas de ajuste preciso.',
+                'compatibility' => 'Progresivos y Foto Blue',
                 'specs'         => [
                     'estructura' => 'Estructura mixta de acetato pulido y puente de aleación metálica antioxidante',
                     'rostro'     => 'Rostros ovalados, redondos y diamante',
@@ -88,8 +88,8 @@ class Catalog
                 'badge_class'   => 'eos-badge-gray',
                 'material'      => 'Metal & Acetato • Dama',
                 'name'          => 'Sherpa Optical Rose Gold',
-                'description'   => 'Aro metálico dorado rosa con cejas caladas y esquinas en acetato traslúcido marmoleado de máxima delicadeza.',
-                'compatibility' => 'Ultraligera para Progresivos y Foto Blue',
+                'description'   => 'Aro metálico dorado rosa con cejas caladas y esquinas en acetato traslúcido marmoleado.',
+                'compatibility' => 'Ultraligera para Progresivos',
                 'specs'         => [
                     'estructura' => 'Metal inoxidable Rose Gold con apliques superiores de acetato y plaquetas suaves',
                     'rostro'     => 'Todo tipo de rostro femenino',
@@ -99,15 +99,17 @@ class Catalog
                 'image'         => asset('img/catalogo/mujer_05.jpg'),
                 'wa_query'      => 'Hola EOS Óptica, quiero consultar disponibilidad de la montura Sherpa Optical Rose Gold.',
             ],
+
+            // === FILA 2 (4 VISIBLES = 8 EN TOTAL AL INICIO) ===
             [
                 'id'            => 5,
                 'category'      => 'caballero ejecutivo',
-                'badge'         => 'Caballero • Beta-Titanio',
+                'badge'         => 'Caballero • Titanio',
                 'badge_class'   => 'eos-badge-gray',
                 'material'      => 'β-Titanium IP • Caballero',
                 'name'          => 'Diciotto Titanium Grafito',
-                'description'   => 'Montura poligonal ultraligera en Beta-Titanio con recubrimiento IP gris grafito para máxima comodidad todo el día.',
-                'compatibility' => 'Ultraligera para uso continuo',
+                'description'   => 'Montura poligonal ultraligera en Beta-Titanio gris grafito para máxima comodidad todo el día.',
+                'compatibility' => 'Peso pluma uso continuo',
                 'specs'         => [
                     'estructura' => 'Aleación β-Titanium IP hipoalergénica de peso pluma y alta flexibilidad',
                     'rostro'     => 'Todo tipo de rostro (ajuste nasal anatómico)',
@@ -124,8 +126,8 @@ class Catalog
                 'badge_class'   => 'eos-badge-black',
                 'material'      => 'Acetato Carmesí • Dama',
                 'name'          => 'Diciotto Cat-Eye B00643',
-                'description'   => 'Diseño Cat-Eye en acetato rojo carmesí con delicado bisel superior cristal que ilumina e impulsa la mirada.',
-                'compatibility' => 'Excelente amplitud para Progresivos',
+                'description'   => 'Diseño Cat-Eye en acetato rojo carmesí con delicado bisel superior cristal que ilumina la mirada.',
+                'compatibility' => 'Ideal para Progresivos',
                 'specs'         => [
                     'estructura' => 'Acetato laminado doble capa con bisagras metálicas de alta precisión',
                     'rostro'     => 'Rostros redondos, ovalados y cuadrados',
@@ -135,53 +137,15 @@ class Catalog
                 'image'         => asset('img/catalogo/mujer_02.jpg'),
                 'wa_query'      => 'Hola EOS Óptica, me interesa la montura de dama Diciotto Cat-Eye B00643 en rojo.',
             ],
-
-            // === RESTO DEL CATALOGO (12 MODELOS ADICIONALES EN FILAS EXACTAS DE 3) ===
             [
                 'id'            => 7,
-                'category'      => 'caballero tendencia',
-                'badge'         => 'Caballero • Doble Puente',
-                'badge_class'   => 'eos-badge-gray',
-                'material'      => 'Acetato Traslúcido • Caballero',
-                'name'          => 'Aviador Lineal 17085',
-                'description'   => 'Montura aviador en acetato negro traslúcido con sutil entramado lineal gris y doble remache metálico frontal.',
-                'compatibility' => 'Amplio campo para Progresivos',
-                'specs'         => [
-                    'estructura' => 'Acetato pulido con doble puente superior y bisagras metálicas flexibles',
-                    'rostro'     => 'Rostros ovalados, redondos y rectangulares',
-                    'cristales'  => 'Visión Sencilla, Foto Blue y Progresivos (Gama Baja, Media y Alta)',
-                    'medidas'    => 'Calibre 54 mm • Puente 15 mm • Varilla 143 mm',
-                ],
-                'image'         => asset('img/catalogo/hombre_02.jpg'),
-                'wa_query'      => 'Hola EOS Óptica, me interesa consultar la montura de caballero Aviador Lineal 17085.',
-            ],
-            [
-                'id'            => 8,
-                'category'      => 'dama tendencia',
-                'badge'         => 'Dama • Geométrica',
-                'badge_class'   => 'eos-badge-black',
-                'material'      => 'Acetato Azul Índigo • Dama',
-                'name'          => 'Diciotto Hexagonal Cristal',
-                'description'   => 'Silueta geométrica en acetato azul traslúcido con triple remache plateado y varillas con alma metálica visible.',
-                'compatibility' => 'Apta para Foto Blue y Progresivos',
-                'specs'         => [
-                    'estructura' => 'Acetato italiano pulido a mano con alma metálica laminada',
-                    'rostro'     => 'Rostros ovalados, redondos y corazón',
-                    'cristales'  => 'Visión Sencilla, Foto Blue y Progresivos (Gama Baja, Media y Alta)',
-                    'medidas'    => 'Calibre 51 mm • Puente 18 mm • Varilla 145 mm',
-                ],
-                'image'         => asset('img/catalogo/mujer_01.jpg'),
-                'wa_query'      => 'Hola EOS Óptica, quiero consultar disponibilidad de la montura de dama Diciotto Hexagonal Cristal.',
-            ],
-            [
-                'id'            => 9,
                 'category'      => 'caballero ejecutivo',
                 'badge'         => 'Caballero • Más Vendida',
                 'badge_class'   => 'eos-badge-black',
                 'material'      => 'Pasta Negra Mate • Caballero',
-                'name'          => 'Ultra Collection T4057A-BL',
-                'description'   => 'Estructura rectangular robusta en acabado negro mate integral. Máxima firmeza y presencia ejecutiva.',
-                'compatibility' => 'Excelente para fórmulas altas y Progresivos',
+                'name'          => 'Ultra Collection T4057A',
+                'description'   => 'Estructura rectangular robusta en acabado negro mate integral. Máxima firmeza y presencia.',
+                'compatibility' => 'Fórmulas altas y Progresivos',
                 'specs'         => [
                     'estructura' => 'Polímero de alto espesor en negro mate con bisagra metálica reforzada',
                     'rostro'     => 'Rostros ovalados, redondos y grandes',
@@ -192,14 +156,14 @@ class Catalog
                 'wa_query'      => 'Hola EOS Óptica, quiero consultar disponibilidad de la montura Ultra Collection T4057A-BL.',
             ],
             [
-                'id'            => 10,
+                'id'            => 8,
                 'category'      => 'dama ejecutivo',
                 'badge'         => 'Dama • Elegancia',
                 'badge_class'   => 'eos-badge-black',
                 'material'      => 'Acetato Negro & Oro • Dama',
                 'name'          => 'Cat-Eye Couture Noir',
-                'description'   => 'Diseño de alta presencia en acetato negro brillante con herrajes internos dorados finamente texturizados.',
-                'compatibility' => 'Soporta fórmulas altas y Progresivos',
+                'description'   => 'Diseño de alta presencia en acetato negro brillante con herrajes internos dorados texturizados.',
+                'compatibility' => 'Fórmulas altas y Foto Blue',
                 'specs'         => [
                     'estructura' => 'Acetato premium de alto brillo con alma metálica dorada filigranada',
                     'rostro'     => 'Rostros ovalados, redondos y triangulares',
@@ -209,15 +173,53 @@ class Catalog
                 'image'         => asset('img/catalogo/mujer_07.jpg'),
                 'wa_query'      => 'Hola EOS Óptica, quiero consultar disponibilidad de la montura Cat-Eye Couture Noir.',
             ],
+
+            // === FILA 3 (4 EN PREVIEW BORROSO) ===
+            [
+                'id'            => 9,
+                'category'      => 'caballero tendencia',
+                'badge'         => 'Caballero • Aviador',
+                'badge_class'   => 'eos-badge-gray',
+                'material'      => 'Acetato Traslúcido • Caballero',
+                'name'          => 'Aviador Lineal 17085',
+                'description'   => 'Montura aviador en acetato negro traslúcido con entramado lineal gris y doble remache frontal.',
+                'compatibility' => 'Amplio campo Progresivo',
+                'specs'         => [
+                    'estructura' => 'Acetato pulido con doble puente superior y bisagras metálicas flexibles',
+                    'rostro'     => 'Rostros ovalados, redondos y rectangulares',
+                    'cristales'  => 'Visión Sencilla, Foto Blue y Progresivos (Gama Baja, Media y Alta)',
+                    'medidas'    => 'Calibre 54 mm • Puente 15 mm • Varilla 143 mm',
+                ],
+                'image'         => asset('img/catalogo/hombre_02.jpg'),
+                'wa_query'      => 'Hola EOS Óptica, me interesa consultar la montura de caballero Aviador Lineal 17085.',
+            ],
+            [
+                'id'            => 10,
+                'category'      => 'dama tendencia',
+                'badge'         => 'Dama • Geométrica',
+                'badge_class'   => 'eos-badge-black',
+                'material'      => 'Acetato Azul Índigo • Dama',
+                'name'          => 'Diciotto Hexagonal Cristal',
+                'description'   => 'Silueta geométrica en acetato azul traslúcido con triple remache plateado y alma metálica.',
+                'compatibility' => 'Foto Blue y Progresivos',
+                'specs'         => [
+                    'estructura' => 'Acetato italiano pulido a mano con alma metálica laminada',
+                    'rostro'     => 'Rostros ovalados, redondos y corazón',
+                    'cristales'  => 'Visión Sencilla, Foto Blue y Progresivos (Gama Baja, Media y Alta)',
+                    'medidas'    => 'Calibre 51 mm • Puente 18 mm • Varilla 145 mm',
+                ],
+                'image'         => asset('img/catalogo/mujer_01.jpg'),
+                'wa_query'      => 'Hola EOS Óptica, quiero consultar disponibilidad de la montura de dama Diciotto Hexagonal Cristal.',
+            ],
             [
                 'id'            => 11,
                 'category'      => 'caballero ejecutivo',
                 'badge'         => 'Caballero • Ejecutivo',
                 'badge_class'   => 'eos-badge-black',
-                'material'      => 'Acetato Oliva Crystal • Caballero',
+                'material'      => 'Acetato Oliva • Caballero',
                 'name'          => 'Serie Rectangular Olive',
-                'description'   => 'Silueta rectangular sobria en tono verde oliva traslúcido, ideal para uso profesional diario y lectura prolongada.',
-                'compatibility' => 'Ideal con Cristales Foto Blue',
+                'description'   => 'Silueta rectangular sobria en tono verde oliva traslúcido para uso profesional y lectura.',
+                'compatibility' => 'Ideal con Foto Blue',
                 'specs'         => [
                     'estructura' => 'Acetato orgánico traslúcido con alma de acero inoxidable',
                     'rostro'     => 'Rostros redondos, ovalados y diamante',
@@ -234,8 +236,8 @@ class Catalog
                 'badge_class'   => 'eos-badge-gray',
                 'material'      => 'Acetato Carey • Dama',
                 'name'          => 'Vogga Carey Marfil',
-                'description'   => 'Combinación refinada de carey ámbar con extremos laterales en tono marfil cremoso para un estilo cálido y elegante.',
-                'compatibility' => 'Ideal con Cristales Foto Blue',
+                'description'   => 'Combinación refinada de carey ámbar con extremos laterales en tono marfil cremoso.',
+                'compatibility' => 'Ideal con Foto Blue',
                 'specs'         => [
                     'estructura' => 'Acetato de celulosa bicolor con puente ergonómico',
                     'rostro'     => 'Rostros ovalados, diamante y triangulares',
@@ -245,33 +247,35 @@ class Catalog
                 'image'         => asset('img/catalogo/mujer_03.jpg'),
                 'wa_query'      => 'Hola EOS Óptica, quiero consultar disponibilidad de la montura de dama Vogga Carey Marfil.',
             ],
+
+            // === FILA 4 (4 ADICIONALES AL DESPLEGAR) ===
             [
                 'id'            => 13,
-                'category'      => 'caballero ejecutivo',
+                'category'      => 'caballero dama ejecutivo',
                 'badge'         => 'Caballero • Minimal',
                 'badge_class'   => 'eos-badge-gray',
-                'material'      => 'Acetato Gris Humo • Caballero',
+                'material'      => 'Acetato Gris Humo • Unisex',
                 'name'          => 'Colección Smoke Crystal',
-                'description'   => 'Acabado cristal gris humo versátil que combina ligereza visual y resistencia estructural para cualquier fórmula.',
-                'compatibility' => 'Soporta todo rango de fórmulas',
+                'description'   => 'Acabado cristal gris humo versátil que combina ligereza visual y resistencia estructural.',
+                'compatibility' => 'Todo rango de fórmulas',
                 'specs'         => [
                     'estructura' => 'Acetato cristal de perfil equilibrado con bisagras de alta durabilidad',
-                    'rostro'     => 'Todo tipo de rostro masculino',
+                    'rostro'     => 'Todo tipo de rostro',
                     'cristales'  => 'Visión Sencilla, Foto Blue y Progresivos (Gama Baja, Media y Alta)',
                     'medidas'    => 'Calibre 55 mm • Puente 18 mm • Varilla 145 mm',
                 ],
                 'image'         => asset('img/catalogo/hombre_04.jpg'),
-                'wa_query'      => 'Hola EOS Óptica, me interesa la montura de caballero Colección Smoke Crystal.',
+                'wa_query'      => 'Hola EOS Óptica, me interesa la montura Colección Smoke Crystal.',
             ],
             [
                 'id'            => 14,
-                'category'      => 'dama tendencia',
+                'category'      => 'dama tendencia ejecutivo',
                 'badge'         => 'Dama • Bicolor',
                 'badge_class'   => 'eos-badge-gray',
                 'material'      => 'Acetato Negro & Miel • Dama',
                 'name'          => 'Stylos VIP Bicolor Ámbar',
-                'description'   => 'Contraste sofisticado entre cejas superiores negras definidas y aro inferior en carey miel translúcido.',
-                'compatibility' => 'Ideal con Cristales Foto Blue',
+                'description'   => 'Contraste sofisticado entre cejas superiores negras y aro inferior en carey miel translúcido.',
+                'compatibility' => 'Foto Blue y Progresivos',
                 'specs'         => [
                     'estructura' => 'Acetato laminado en degradé con varillas reforzadas en metal dorado',
                     'rostro'     => 'Rostros ovalados, cuadrados y corazón',
@@ -283,13 +287,13 @@ class Catalog
             ],
             [
                 'id'            => 15,
-                'category'      => 'caballero tendencia',
+                'category'      => 'caballero dama tendencia',
                 'badge'         => 'Caballero • Vintage',
                 'badge_class'   => 'eos-badge-black',
-                'material'      => 'Acetato Ámbar • Caballero',
+                'material'      => 'Acetato Ámbar • Unisex',
                 'name'          => 'Unofficial SHP Crown-Panto',
-                'description'   => 'Geometría frontal superior plana con base redondeada en tono caramelo traslúcido de carácter moderno.',
-                'compatibility' => 'Apta para Foto Blue y Visión Sencilla',
+                'description'   => 'Geometría frontal superior plana con base redondeada en tono caramelo traslúcido.',
+                'compatibility' => 'Foto Blue y Visión Sencilla',
                 'specs'         => [
                     'estructura' => 'Acetato moldeado con puente keyhole ergonómico y varillas con alma metálica',
                     'rostro'     => 'Rostros cuadrados, ovalados y triangulares',
@@ -297,17 +301,55 @@ class Catalog
                     'medidas'    => 'Calibre 51 mm • Puente 19 mm • Varilla 145 mm',
                 ],
                 'image'         => asset('img/catalogo/hombre_05.jpg'),
-                'wa_query'      => 'Hola EOS Óptica, quiero consultar la montura de caballero Unofficial SHP Crown-Panto.',
+                'wa_query'      => 'Hola EOS Óptica, quiero consultar la montura Unofficial SHP Crown-Panto.',
             ],
             [
                 'id'            => 16,
                 'category'      => 'dama tendencia',
+                'badge'         => 'Dama • Color Block',
+                'badge_class'   => 'eos-badge-gray',
+                'material'      => 'Acetato Burdeos • Dama',
+                'name'          => 'Vogga Multicolor FP2106',
+                'description'   => 'Frente en tono vino burdeos con acentos laterales vibrantes que aportan frescura.',
+                'compatibility' => 'Todo tipo de cristales',
+                'specs'         => [
+                    'estructura' => 'Acetato multicapa ligero con terminales anatómicos',
+                    'rostro'     => 'Rostros ovalados, alargados y redondos',
+                    'cristales'  => 'Visión Sencilla, Foto Blue y Progresivos (Gama Baja, Media y Alta)',
+                    'medidas'    => 'Calibre 52 mm • Puente 16 mm • Varilla 140 mm',
+                ],
+                'image'         => asset('img/catalogo/mujer_04.jpg'),
+                'wa_query'      => 'Hola EOS Óptica, me interesa consultar la montura de dama Vogga Multicolor FP2106.',
+            ],
+
+            // === FILA 5 (4 ADICIONALES AL DESPLEGAR = 20 EN TOTAL, 5 FILAS EXACTAS DE 4) ===
+            [
+                'id'            => 17,
+                'category'      => 'caballero tendencia ejecutivo',
+                'badge'         => 'Caballero • Ultraligera',
+                'badge_class'   => 'eos-badge-gray',
+                'material'      => 'Acetato & Metal • Caballero',
+                'name'          => 'Vistan Germany Azul',
+                'description'   => 'Aro redondo estilizado en azul profundo con varillas ultradelgadas y remaches dobles.',
+                'compatibility' => 'Ideal con Foto Blue',
+                'specs'         => [
+                    'estructura' => 'Frente ligero en acetato con varillas flexibles de perfil delgado',
+                    'rostro'     => 'Rostros cuadrados, angulares y ovalados',
+                    'cristales'  => 'Visión Sencilla, Foto Blue y Policarbonato',
+                    'medidas'    => 'Calibre 50 mm • Puente 17 mm • Varilla 140 mm',
+                ],
+                'image'         => asset('img/catalogo/hombre_07.jpg'),
+                'wa_query'      => 'Hola EOS Óptica, me interesa la montura de caballero Vistan Germany Azul Cobalto.',
+            ],
+            [
+                'id'            => 18,
+                'category'      => 'dama tendencia',
                 'badge'         => 'Dama • Luminosa',
                 'badge_class'   => 'eos-badge-gray',
-                'material'      => 'Acetato Champán & Turquesa • Dama',
+                'material'      => 'Champán & Turquesa • Dama',
                 'name'          => 'Stylos Cat-Eye Aqua',
-                'description'   => 'Montura translúcida en tono rosa champán con arco superior en azul turquesa que aporta luminosidad al rostro.',
-                'compatibility' => 'Apta para Foto Blue y Visión Sencilla',
+                'description'   => 'Montura translúcida en tono rosa champán con arco superior en azul turquesa luminoso.',
+                'compatibility' => 'Foto Blue y Visión Sencilla',
                 'specs'         => [
                     'estructura' => 'Acetato cristal traslúcido con cejas esmaltadas y alma metálica',
                     'rostro'     => 'Rostros ovalados, redondos y diamante',
@@ -318,14 +360,14 @@ class Catalog
                 'wa_query'      => 'Hola EOS Óptica, quiero consultar la montura de dama Stylos Cat-Eye Aqua.',
             ],
             [
-                'id'            => 17,
+                'id'            => 19,
                 'category'      => 'caballero ejecutivo',
                 'badge'         => 'Caballero • Metal',
                 'badge_class'   => 'eos-badge-black',
                 'material'      => 'Acero Inoxidable • Caballero',
                 'name'          => 'Aviador Metálico AL18019',
-                'description'   => 'Doble puente metálico con cejas superiores en azul cobalto y plaquetas nasales de silicona ajustable.',
-                'compatibility' => 'Óptima para Progresivos Gama Alta',
+                'description'   => 'Doble puente metálico con cejas superiores en azul cobalto y plaquetas de silicona.',
+                'compatibility' => 'Progresivos Gama Alta',
                 'specs'         => [
                     'estructura' => 'Acero inoxidable hipoalergénico con terminales recubiertos en acetato',
                     'rostro'     => 'Todo tipo de rostro (plaquetas anatómicas regulables)',
@@ -336,14 +378,14 @@ class Catalog
                 'wa_query'      => 'Hola EOS Óptica, quiero consultar disponibilidad de la montura Aviador Metálico AL18019.',
             ],
             [
-                'id'            => 18,
-                'category'      => 'dama ejecutivo',
+                'id'            => 20,
+                'category'      => 'caballero dama ejecutivo',
                 'badge'         => 'Dama • Ultraligera',
                 'badge_class'   => 'eos-badge-black',
-                'material'      => 'Metal Dorado & Verde Agua • Dama',
+                'material'      => 'Metal Dorado & Esmeralda • Dama',
                 'name'          => 'Colección Metálica Emerald',
-                'description'   => 'Perfil metálico dorado ultraligero con cejas superiores en verde agua y plaquetas nasales de ajuste suave.',
-                'compatibility' => 'Óptima para Progresivos Gama Alta',
+                'description'   => 'Perfil metálico dorado ultraligero con cejas superiores en verde agua y plaquetas suaves.',
+                'compatibility' => 'Progresivos Gama Alta',
                 'specs'         => [
                     'estructura' => 'Aleación metálica dorada antioxidante con detalle superior esmaltado',
                     'rostro'     => 'Todo tipo de rostro (plaquetas ajustables)',
