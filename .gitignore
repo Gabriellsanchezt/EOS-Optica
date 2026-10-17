@@ -1,0 +1,22 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs and runtime booking records
+*.log
+*.sqlite
+/storage/bookings.json
+
+# IDEs & System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+dump.html
+test_*.php

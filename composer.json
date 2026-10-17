@@ -1,0 +1,27 @@
+{
+    "name": "eosoptica/landing-mvc",
+    "description": "Landing Page Clinica y Boutique para EOS Optica Barquisimeto en Arquitectura MVC con PHP 8 y Bootstrap 5",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "EOS Optica",
+            "email": "contacto@eosoptica.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

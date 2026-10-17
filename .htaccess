@@ -1,0 +1,58 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+AddDefaultCharset UTF-8
+
+# Bloquear archivos de configuracion, almacenamiento y control de versiones
+<FilesMatch "(^\.|\.env|composer\.(json|lock)|\.md|\.log|bookings\.json)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Cabeceras de Seguridad y Resiliencia en Hosting
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Compresion GZIP / Deflate
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache optima para recursos estaticos en produccion
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquear acceso web directo a carpetas privadas del nucleo MVC
+    RewriteRule ^(app|config|vendor|storage)(/.*)?$ - [F,L]
+
+    # Compatibilidad con alias de rutas hacia assets/
+    RewriteRule ^images/(.*)$ assets/img/$1 [L]
+    RewriteRule ^css/(.*)$ assets/css/$1 [L]
+    RewriteRule ^js/(.*)$ assets/js/$1 [L]
+
+    # Servir directamente si el archivo o carpeta fisica existe (ej: assets/, robots.txt, favicon.svg)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Enrutar todas las peticiones dinamicas al Front Controller sin bucles de redireccion
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
