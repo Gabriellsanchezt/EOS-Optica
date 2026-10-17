@@ -181,71 +181,38 @@
       <!-- Panel de Controles -->
       <div class="col-lg-5">
         <div class="simulator-panel h-100 p-4 rounded-4 d-flex flex-column justify-content-between gap-4">
-          <!-- 1. Tratamientos Monofocales / Digitales -->
+          <!-- 1. Seleccion de Tecnologia (4 Botones Unificados) -->
           <div>
-            <label class="form-label text-white fw-bold small text-uppercase tracking-wider mb-2 d-flex align-items-center gap-2">
+            <label class="form-label text-white fw-bold small text-uppercase tracking-wider mb-3 d-flex align-items-center gap-2">
               <i class="bi bi-layers text-white"></i>
-              <span>1. Tratamientos Ópticos y Protección Digital</span>
+              <span>1. Selecciona la tecnología del cristal</span>
             </label>
 
             <div class="d-flex flex-column gap-2" role="tablist">
               <?php foreach ($lenses as $slug => $lens): ?>
-                <?php if (($lens['group'] ?? '') === 'tratamiento'): ?>
-                  <button
-                    type="button"
-                    class="lens-selector-btn text-start p-3 rounded-3 d-flex align-items-center gap-3 <?= $slug === 'ar-blue' ? 'active' : '' ?>"
-                    data-lens="<?= e($slug) ?>"
-                  >
-                    <div class="lens-selector-icon">
-                      <i class="bi <?= e($lens['icon']) ?> fs-5"></i>
-                    </div>
-                    <div>
-                      <strong class="d-block text-white"><?= e($lens['name']) ?></strong>
-                      <small class="text-secondary-light"><?= e($lens['subtitle']) ?></small>
-                    </div>
-                  </button>
-                <?php endif; ?>
-              <?php endforeach; ?>
-            </div>
-          </div>
-
-          <!-- 2. Progresivos Keten (Baja, Media y Alta Gama) -->
-          <div class="keten-selector-box p-3 rounded-3">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <label class="form-label text-white fw-bold small text-uppercase tracking-wider mb-0 d-flex align-items-center gap-2">
-                <i class="bi bi-eyeglasses text-white"></i>
-                <span>2. Progresivos Keten (Multifocales)</span>
-              </label>
-              <span class="badge rounded-pill bg-white text-dark fw-bold" style="font-size: 0.7rem;">3 Gamas</span>
-            </div>
-            <p class="text-secondary-light mb-2" style="font-size: 0.78rem;">
-              Compara la amplitud del corredor visual (Lejos, Intermedio y Cerca) y la reducción de distorsión lateral:
-            </p>
-            <div class="row g-2" role="tablist">
-              <?php foreach ($lenses as $slug => $lens): ?>
-                <?php if (($lens['group'] ?? '') === 'keten'): ?>
-                  <div class="col-4">
-                    <button
-                      type="button"
-                      class="lens-selector-btn keten-tier-btn w-100 text-center p-2 rounded-3 d-flex flex-column align-items-center justify-content-center gap-1"
-                      data-lens="<?= e($slug) ?>"
-                    >
-                      <i class="bi <?= e($lens['icon']) ?> text-white fs-5"></i>
-                      <strong class="d-block text-white small"><?= e($lens['tier_label']) ?></strong>
-                      <span class="text-secondary-light" style="font-size: 0.7rem;"><?= e($lens['tier_short']) ?></span>
-                    </button>
+                <button
+                  type="button"
+                  class="lens-selector-btn text-start p-3 rounded-3 d-flex align-items-center gap-3 <?= $slug === 'ar-blue' ? 'active' : '' ?>"
+                  data-lens="<?= e($slug) ?>"
+                >
+                  <div class="lens-selector-icon">
+                    <i class="bi <?= e($lens['icon']) ?> fs-5"></i>
                   </div>
-                <?php endif; ?>
+                  <div>
+                    <strong class="d-block text-white" <?= $slug === 'progresivo-keten' ? 'id="ketenBtnTitle"' : '' ?>><?= e($lens['name']) ?></strong>
+                    <small class="text-secondary-light" <?= $slug === 'progresivo-keten' ? 'id="ketenBtnSubtitle"' : '' ?>><?= e($lens['subtitle']) ?></small>
+                  </div>
+                </button>
               <?php endforeach; ?>
             </div>
           </div>
 
-          <!-- 3. Slider de Radiacion UV -->
+          <!-- 2. Slider Dinamico (Radiacion UV o Nivel de Gama Progresivo Keten) -->
           <div>
             <div class="d-flex justify-content-between align-items-center mb-2">
               <label for="sunSlider" class="form-label text-white fw-bold small text-uppercase tracking-wider mb-0 d-flex align-items-center gap-2">
-                <i class="bi bi-sun text-white"></i>
-                <span>3. Exposición Solar Exterior (UV)</span>
+                <i class="bi bi-sun text-white" id="sliderControlIcon"></i>
+                <span id="sliderControlLabel">2. Exposición Solar Exterior (UV)</span>
               </label>
               <span class="badge rounded-pill bg-white bg-opacity-10 text-white border border-secondary" id="sunValueLabel">
                 Interior (20% UV)
@@ -255,9 +222,9 @@
             <input type="range" class="form-range eos-range" id="sunSlider" min="0" max="100" value="20">
 
             <div class="d-flex justify-content-between small text-secondary-light mt-1" style="font-size: 0.78rem;">
-              <span><i class="bi bi-building me-1"></i>Oficina / Noche</span>
-              <span><i class="bi bi-cloud-sun me-1"></i>Exterior Templado</span>
-              <span><i class="bi bi-brightness-high-fill me-1"></i>Sol Intenso</span>
+              <span id="sliderTickLeft" role="button" data-slider-jump="15"><i class="bi bi-building me-1"></i>Oficina / Noche</span>
+              <span id="sliderTickCenter" role="button" data-slider-jump="50"><i class="bi bi-cloud-sun me-1"></i>Exterior Templado</span>
+              <span id="sliderTickRight" role="button" data-slider-jump="90"><i class="bi bi-brightness-high-fill me-1"></i>Sol Intenso</span>
             </div>
           </div>
 

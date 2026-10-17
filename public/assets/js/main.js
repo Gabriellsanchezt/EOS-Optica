@@ -32,6 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const lensButtons = document.querySelectorAll('.lens-selector-btn');
   const sunSlider = document.getElementById('sunSlider');
   const sunValueLabel = document.getElementById('sunValueLabel');
+  const sliderControlIcon = document.getElementById('sliderControlIcon');
+  const sliderControlLabel = document.getElementById('sliderControlLabel');
+  const sliderTickLeft = document.getElementById('sliderTickLeft');
+  const sliderTickCenter = document.getElementById('sliderTickCenter');
+  const sliderTickRight = document.getElementById('sliderTickRight');
+  const ketenBtnTitle = document.getElementById('ketenBtnTitle');
+  const ketenBtnSubtitle = document.getElementById('ketenBtnSubtitle');
   const leftLens = document.getElementById('leftLens');
   const rightLens = document.getElementById('rightLens');
   const leftGlare = document.getElementById('leftGlare');
@@ -65,29 +72,123 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentLens = 'ar-blue';
 
-  function applyKetenAberration(overlayEl, progConfig) {
-    if (!overlayEl || !progConfig) return;
+  function applyKetenAberration(overlayEl, sideWidth, blurPx, blurOpacity) {
+    if (!overlayEl) return;
     overlayEl.querySelectorAll('.keten-aberration').forEach(sideEl => {
-      sideEl.style.width = `${progConfig.side_width}%`;
-      sideEl.style.backdropFilter = `blur(${progConfig.blur_px}px)`;
-      sideEl.style.opacity = `${progConfig.blur_opacity}`;
+      sideEl.style.width = `${sideWidth.toFixed(1)}%`;
+      sideEl.style.backdropFilter = `blur(${blurPx.toFixed(1)}px)`;
+      sideEl.style.opacity = `${blurOpacity.toFixed(2)}`;
     });
   }
 
   function updateSimulator() {
     if (!sunSlider || !lensData[currentLens]) return;
 
-    const uvVal = parseInt(sunSlider.value, 10);
+    const sliderVal = parseInt(sunSlider.value, 10);
     const info = lensData[currentLens];
-
-    specTitle.textContent = info.full_title;
-    specDesc.textContent = info.description;
 
     if (info.metric_labels) {
       if (meterLabel1) meterLabel1.textContent = info.metric_labels.m1;
       if (meterLabel2) meterLabel2.textContent = info.metric_labels.m2;
       if (meterLabel3) meterLabel3.textContent = info.metric_labels.m3;
     }
+
+    // MODO 1: Progresivo Keten (Un solo boton; el slider controla Gama Baja, Media y Alta)
+    if (currentLens === 'progresivo-keten' && info.tiers) {
+      let tierKey = 'media';
+      if (sliderVal <= 33) {
+        tierKey = 'baja';
+      } else if (sliderVal >= 67) {
+        tierKey = 'alta';
+      }
+      const tier = info.tiers[tierKey];
+
+      // Actualizar texto del propio boton Progresivo Keten y de la tarjeta de especificaciones
+      if (ketenBtnTitle) ketenBtnTitle.textContent = tier.name;
+      if (ketenBtnSubtitle) ketenBtnSubtitle.textContent = tier.subtitle;
+
+      specTitle.textContent = tier.full_title;
+      specDesc.textContent = tier.description;
+
+      if (sliderControlIcon) sliderControlIcon.className = 'bi bi-sliders text-white';
+      if (sliderControlLabel) sliderControlLabel.textContent = '2. Desliza para comparar Gama Keten';
+      if (sliderTickLeft) sliderTickLeft.innerHTML = '<i class="bi bi-distribute-vertical me-1"></i>Gama Baja';
+      if (sliderTickCenter) sliderTickCenter.innerHTML = '<i class="bi bi-aspect-ratio me-1"></i>Gama Media';
+      if (sliderTickRight) sliderTickRight.innerHTML = '<i class="bi bi-arrows-fullscreen me-1"></i>Gama Alta';
+
+      sunValueLabel.textContent = `${tier.tier_label} (${tier.tier_short})`;
+      stageConditionBadge.textContent = tier.name;
+      if (stageConditionIcon) stageConditionIcon.className = 'bi bi-eyeglasses text-white';
+
+      // Interpolacion continua de amplitud de corredor y distorsion lateral con el slider (0 a 100)
+      const ratio = sliderVal / 100;
+      const sideWidth = 36 - ratio * 27;       // De 36% (Baja) a 9% (Alta)
+      const blurPx = 6.8 - ratio * 6.0;        // De 6.8px blur (Baja) a 0.8px (Alta)
+      const blurOpacity = 0.92 - ratio * 0.74; // De 0.92 opacidad (Baja) a 0.18 (Alta)
+      const corridorPct = Math.round(42 + ratio * 52); // De 42% a 94%
+
+      meterBlue.style.width = `${tier.metrics.blue_block}%`;
+      meterGlare.style.width = `${tier.metrics.glare_reduction}%`;
+      meterPhoto.style.width = `${tier.metrics.photochromic}%`;
+
+      if (meterBlueVal) meterBlueVal.textContent = `${tier.metrics.blue_block}%`;
+      if (meterGlareVal) meterGlareVal.textContent = `${tier.metrics.glare_reduction}%`;
+      if (meterPhotoVal) meterPhotoVal.textContent = `${tier.metrics.photochromic}%`;
+
+      stageCaption.textContent = tier.caption;
+      quoteLensBtn.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(tier.wa_message)}`;
+
+      stageBg.style.filter = 'brightness(1.02)';
+
+      if (leftKetenOverlay) {
+        leftKetenOverlay.classList.remove('d-none');
+        applyKetenAberration(leftKetenOverlay, sideWidth, blurPx, blurOpacity);
+      }
+      if (rightKetenOverlay) {
+        rightKetenOverlay.classList.remove('d-none');
+        applyKetenAberration(rightKetenOverlay, sideWidth, blurPx, blurOpacity);
+      }
+      if (ketenStageBadge) {
+        ketenStageBadge.classList.remove('d-none');
+        ketenStageBadge.classList.add('d-inline-flex');
+      }
+      if (ketenStageText) {
+        ketenStageText.textContent = tier.subtitle;
+      }
+      if (ketenLegendBar) {
+        ketenLegendBar.classList.remove('d-none');
+        ketenLegendBar.classList.add('d-inline-flex');
+      }
+      if (ketenCorridorMetric) {
+        ketenCorridorMetric.textContent = `Amplitud de corredor nítido: ${corridorPct}%`;
+      }
+      if (leftLensBadge) {
+        leftLensBadge.innerHTML = `<i class="bi bi-eye me-1"></i>${tier.badge_left}`;
+      }
+      if (rightLensBadge) {
+        rightLensBadge.innerHTML = `<i class="bi bi-aspect-ratio me-1"></i>${tier.badge_right}`;
+      }
+
+      leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+      rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+      leftLens.style.backdropFilter = 'contrast(1.16) brightness(1.04)';
+      rightLens.style.backdropFilter = 'contrast(1.16) brightness(1.04)';
+      leftReflex.style.opacity = '0.75';
+      rightReflex.style.opacity = '0.75';
+      leftGlare.style.opacity = '0.05';
+      rightGlare.style.opacity = '0.05';
+      return;
+    }
+
+    // MODO 2: Tratamientos Monofocales / Digitales (AR Blue, Foto Blue, Convencional)
+    if (sliderControlIcon) sliderControlIcon.className = 'bi bi-sun text-white';
+    if (sliderControlLabel) sliderControlLabel.textContent = '2. Exposición Solar Exterior (UV)';
+    if (sliderTickLeft) sliderTickLeft.innerHTML = '<i class="bi bi-building me-1"></i>Oficina / Noche';
+    if (sliderTickCenter) sliderTickCenter.innerHTML = '<i class="bi bi-cloud-sun me-1"></i>Exterior Templado';
+    if (sliderTickRight) sliderTickRight.innerHTML = '<i class="bi bi-brightness-high-fill me-1"></i>Sol Intenso';
+
+    specTitle.textContent = info.full_title;
+    specDesc.textContent = info.description;
 
     meterBlue.style.width = `${info.metrics.blue_block}%`;
     meterGlare.style.width = `${info.metrics.glare_reduction}%`;
@@ -100,109 +201,68 @@ document.addEventListener('DOMContentLoaded', () => {
     stageCaption.textContent = info.caption;
     quoteLensBtn.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(info.wa_message)}`;
 
-    if (uvVal < 30) {
-      sunValueLabel.textContent = `Interior (${uvVal}% UV)`;
+    if (sliderVal < 30) {
+      sunValueLabel.textContent = `Interior (${sliderVal}% UV)`;
       stageConditionBadge.textContent = 'Entorno Digital / Oficina Interior';
       if (stageConditionIcon) stageConditionIcon.className = 'bi bi-display text-white';
-    } else if (uvVal < 70) {
-      sunValueLabel.textContent = `Exterior Templado (${uvVal}% UV)`;
+    } else if (sliderVal < 70) {
+      sunValueLabel.textContent = `Exterior Templado (${sliderVal}% UV)`;
       stageConditionBadge.textContent = 'Exterior Luminoso / Conducción';
       if (stageConditionIcon) stageConditionIcon.className = 'bi bi-cloud-sun text-white';
     } else {
-      sunValueLabel.textContent = `Sol Intenso (${uvVal}% UV)`;
+      sunValueLabel.textContent = `Sol Intenso (${sliderVal}% UV)`;
       stageConditionBadge.textContent = 'Sol Radiante de Barquisimeto (Alta UV)';
       if (stageConditionIcon) stageConditionIcon.className = 'bi bi-brightness-high-fill text-white';
     }
 
-    const bgBrightness = 0.85 + (uvVal / 100) * 0.35;
+    const bgBrightness = 0.85 + (sliderVal / 100) * 0.35;
     stageBg.style.filter = `brightness(${bgBrightness.toFixed(2)})`;
 
-    // Control de Geometria Progresiva Keten (Baja, Media y Alta Gama)
-    if (info.progressive) {
-      if (leftKetenOverlay) {
-        leftKetenOverlay.classList.remove('d-none');
-        applyKetenAberration(leftKetenOverlay, info.progressive);
-      }
-      if (rightKetenOverlay) {
-        rightKetenOverlay.classList.remove('d-none');
-        applyKetenAberration(rightKetenOverlay, info.progressive);
-      }
-      if (ketenStageBadge) {
-        ketenStageBadge.classList.remove('d-none');
-        ketenStageBadge.classList.add('d-inline-flex');
-      }
-      if (ketenStageText) {
-        ketenStageText.textContent = `Progresivo Keten: ${info.tier_label} (${info.tier_short})`;
-      }
-      if (ketenLegendBar) {
-        ketenLegendBar.classList.remove('d-none');
-        ketenLegendBar.classList.add('d-inline-flex');
-      }
-      if (ketenCorridorMetric) {
-        ketenCorridorMetric.textContent = `Campo útil sin distorsión: ${info.progressive.corridor_pct}%`;
-      }
-      if (leftLensBadge) {
-        leftLensBadge.innerHTML = `<i class="bi bi-eye me-1"></i>${info.progressive.badge_left}`;
-      }
-      if (rightLensBadge) {
-        rightLensBadge.innerHTML = `<i class="bi bi-aspect-ratio me-1"></i>${info.progressive.badge_right}`;
-      }
+    if (leftKetenOverlay) leftKetenOverlay.classList.add('d-none');
+    if (rightKetenOverlay) rightKetenOverlay.classList.add('d-none');
+    if (ketenStageBadge) {
+      ketenStageBadge.classList.add('d-none');
+      ketenStageBadge.classList.remove('d-inline-flex');
+    }
+    if (ketenLegendBar) {
+      ketenLegendBar.classList.add('d-none');
+      ketenLegendBar.classList.remove('d-inline-flex');
+    }
+    if (leftLensBadge) {
+      leftLensBadge.innerHTML = '<i class="bi bi-eye me-1"></i>Visión EOS';
+    }
+    if (rightLensBadge) {
+      rightLensBadge.innerHTML = '<i class="bi bi-hd me-1"></i>Nitidez HD';
+    }
 
-      leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-      rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-      leftLens.style.backdropFilter = 'contrast(1.16) brightness(1.04)';
-      rightLens.style.backdropFilter = 'contrast(1.16) brightness(1.04)';
-      leftReflex.style.opacity = '0.75';
-      rightReflex.style.opacity = '0.75';
+    if (currentLens === 'ar-blue') {
+      leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
+      rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
+      leftLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
+      rightLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
+      leftReflex.style.opacity = '1';
+      rightReflex.style.opacity = '1';
+      leftGlare.style.opacity = '0.06';
+      rightGlare.style.opacity = '0.06';
+    } else if (currentLens === 'foto-blue') {
+      const darkOpacity = 0.12 + (sliderVal / 100) * 0.72;
+      leftLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
+      rightLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
+      leftLens.style.backdropFilter = 'contrast(1.12)';
+      rightLens.style.backdropFilter = 'contrast(1.12)';
+      leftReflex.style.opacity = '0.85';
+      rightReflex.style.opacity = '0.85';
       leftGlare.style.opacity = '0.05';
       rightGlare.style.opacity = '0.05';
     } else {
-      if (leftKetenOverlay) leftKetenOverlay.classList.add('d-none');
-      if (rightKetenOverlay) rightKetenOverlay.classList.add('d-none');
-      if (ketenStageBadge) {
-        ketenStageBadge.classList.add('d-none');
-        ketenStageBadge.classList.remove('d-inline-flex');
-      }
-      if (ketenLegendBar) {
-        ketenLegendBar.classList.add('d-none');
-        ketenLegendBar.classList.remove('d-inline-flex');
-      }
-      if (leftLensBadge) {
-        leftLensBadge.innerHTML = '<i class="bi bi-eye me-1"></i>Visión EOS';
-      }
-      if (rightLensBadge) {
-        rightLensBadge.innerHTML = '<i class="bi bi-hd me-1"></i>Nitidez HD';
-      }
-
-      if (currentLens === 'ar-blue') {
-        leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
-        rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
-        leftLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
-        rightLens.style.backdropFilter = 'contrast(1.14) brightness(1.04)';
-        leftReflex.style.opacity = '1';
-        rightReflex.style.opacity = '1';
-        leftGlare.style.opacity = '0.06';
-        rightGlare.style.opacity = '0.06';
-      } else if (currentLens === 'foto-blue') {
-        const darkOpacity = 0.12 + (uvVal / 100) * 0.72;
-        leftLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
-        rightLens.style.backgroundColor = `rgba(10, 10, 10, ${darkOpacity.toFixed(2)})`;
-        leftLens.style.backdropFilter = 'contrast(1.12)';
-        rightLens.style.backdropFilter = 'contrast(1.12)';
-        leftReflex.style.opacity = '0.85';
-        rightReflex.style.opacity = '0.85';
-        leftGlare.style.opacity = '0.05';
-        rightGlare.style.opacity = '0.05';
-      } else {
-        leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-        rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-        leftLens.style.backdropFilter = 'contrast(0.95)';
-        rightLens.style.backdropFilter = 'contrast(0.95)';
-        leftReflex.style.opacity = '0';
-        rightReflex.style.opacity = '0';
-        leftGlare.style.opacity = '0.88';
-        rightGlare.style.opacity = '0.88';
-      }
+      leftLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+      rightLens.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+      leftLens.style.backdropFilter = 'contrast(0.95)';
+      rightLens.style.backdropFilter = 'contrast(0.95)';
+      leftReflex.style.opacity = '0';
+      rightReflex.style.opacity = '0';
+      leftGlare.style.opacity = '0.88';
+      rightGlare.style.opacity = '0.88';
     }
   }
 
@@ -214,7 +274,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (currentLens === 'foto-blue' && sunSlider && parseInt(sunSlider.value, 10) < 40) {
         sunSlider.value = '78';
+      } else if (currentLens === 'progresivo-keten' && sunSlider) {
+        // Inicia en Gama Baja (15) o Media (50) para que al deslizar note el cambio de inmediato
+        sunSlider.value = '15';
       }
+      updateSimulator();
+    });
+  });
+
+  document.querySelectorAll('[data-slider-jump]').forEach(tick => {
+    tick.addEventListener('click', () => {
+      if (!sunSlider) return;
+      sunSlider.value = tick.getAttribute('data-slider-jump') || '50';
       updateSimulator();
     });
   });
