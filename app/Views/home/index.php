@@ -395,9 +395,9 @@
         <?php foreach ($catalog as $idx => $item): ?>
           <?php
             $initialStateClass = '';
-            if ($idx >= 8 && $idx < 12) {
+            if ($idx >= 4 && $idx < 8) {
                 $initialStateClass = 'catalog-item-blurred';
-            } elseif ($idx >= 12) {
+            } elseif ($idx >= 8) {
                 $initialStateClass = 'd-none';
             }
           ?>
