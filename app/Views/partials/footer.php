@@ -11,7 +11,7 @@
           <span class="brand-title text-white">EOS <span class="text-secondary-light">ÓPTICA</span></span>
         </div>
         <p class="text-secondary-light mb-3 pe-lg-4">
-          Salud visual integral, examen optométrico sin costo por la compra de tus lentes en tienda, consulta oftalmológica especializada, cristales Progresivos Keten y monturas en Barquisimeto, Estado Lara.
+          Salud visual integral, examen optométrico sin costo por la compra de tus lentes en tienda, consulta oftalmológica especializada, cristales Foto Blue, Progresivos y monturas en Barquisimeto, Estado Lara.
         </p>
         <div class="d-flex align-items-center gap-3">
           <a href="<?= e((string) config('instagram.url')) ?>" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram de EOS Óptica">

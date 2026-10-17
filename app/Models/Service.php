@@ -19,8 +19,8 @@ class Service
             ],
             [
                 'icon'        => 'bi-shield-check',
-                'title'       => 'AR Blue, Foto Blue & Keten',
-                'description' => 'Cristales digitales y Progresivos Keten (Gama Baja, Media y Alta) con protección UV400.',
+                'title'       => 'Foto Blue & Progresivos',
+                'description' => 'Cristales Foto Blue y Progresivos (Gama Baja, Media y Alta) con protección UV400.',
             ],
             [
                 'icon'        => 'bi-eyeglasses',
@@ -62,16 +62,16 @@ class Service
                 'badge'       => 'Laboratorio Óptico',
                 'featured'    => false,
                 'icon'        => 'bi-layers-half',
-                'title'       => 'Cristales AR Blue, Foto Blue & Progresivos Keten',
-                'description' => 'Protege tu retina del espectro de luz azul-violeta o disfruta de enfoque multifocal continuo con nuestros cristales Progresivos Keten en Gama Baja, Media y Alta.',
+                'title'       => 'Cristales Foto Blue & Progresivos',
+                'description' => 'Protege tu retina de pantallas y radiación solar con Foto Blue, o disfruta de enfoque multifocal continuo con nuestros Progresivos en Gama Baja, Media y Alta.',
                 'features'    => [
-                    'AR Blue y Foto Blue: Protección digital y oscurecimiento UV',
-                    'Progresivos Keten: Gama Baja, Gama Media y Gama Alta',
+                    'Foto Blue: Filtro azul en interiores y oscurecimiento UV al sol',
+                    'Progresivos: Gama Baja, Gama Media y Gama Alta',
                     'Visión nítida de lejos, computadora y lectura sin líneas',
                 ],
                 'cta_label'   => 'Probar en Laboratorio Interactivo',
                 'cta_target'  => '#simulador',
-                'service_val' => 'Cotizar Cristales (AR Blue / Foto Blue / Progresivos Keten)',
+                'service_val' => 'Cotizar Cristales (Foto Blue / Progresivos)',
             ],
             [
                 'id'          => 'oftalmologia',

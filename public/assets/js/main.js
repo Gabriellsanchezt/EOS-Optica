@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const stageBg = document.getElementById('stageBg');
   const quoteLensBtn = document.getElementById('quoteLensBtn');
 
-  let currentLens = 'ar-blue';
+  let currentLens = 'foto-blue';
 
   function applyKetenAberration(overlayEl, sideWidth, blurPx, blurOpacity) {
     if (!overlayEl) return;
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       specDesc.textContent = tier.description;
 
       if (sliderControlIcon) sliderControlIcon.className = 'bi bi-sliders text-white';
-      if (sliderControlLabel) sliderControlLabel.textContent = '2. Desliza para comparar Gama Keten';
+      if (sliderControlLabel) sliderControlLabel.textContent = '2. Desliza para comparar Gama del Progresivo';
       if (sliderTickLeft) sliderTickLeft.innerHTML = '<i class="bi bi-distribute-vertical me-1"></i>Gama Baja';
       if (sliderTickCenter) sliderTickCenter.innerHTML = '<i class="bi bi-aspect-ratio me-1"></i>Gama Media';
       if (sliderTickRight) sliderTickRight.innerHTML = '<i class="bi bi-arrows-fullscreen me-1"></i>Gama Alta';
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       lensButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentLens = btn.getAttribute('data-lens') || 'ar-blue';
+      currentLens = btn.getAttribute('data-lens') || 'foto-blue';
 
       if (currentLens === 'foto-blue' && sunSlider && parseInt(sunSlider.value, 10) < 40) {
         sunSlider.value = '78';

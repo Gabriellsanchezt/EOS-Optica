@@ -17,7 +17,7 @@
         </h1>
 
         <p class="lead text-secondary mb-4 pe-lg-4">
-          En <strong><?= e((string) config('app.name')) ?></strong> combinamos precisión en optometría y oftalmología con monturas modernas, cristales <strong>Antirreflejo Blue</strong>, <strong>Foto Blue</strong> y <strong>Progresivos Keten</strong> (Gama Baja, Media y Alta).
+          En <strong><?= e((string) config('app.name')) ?></strong> combinamos precisión en optometría y oftalmología con monturas modernas, cristales <strong>Foto Blue</strong> y <strong>Progresivos</strong> (Gama Baja, Media y Alta).
         </p>
 
         <div class="d-flex flex-wrap gap-3 mb-5">
@@ -37,8 +37,8 @@
             <div class="small text-secondary">Examen Optométrico <span class="d-block" style="font-size: 0.72rem;">(Al comprar en tienda)</span></div>
           </div>
           <div class="col-4 border-start border-secondary border-opacity-25 ps-3">
-            <div class="fw-extrabold fs-4 text-dark">Blue & Keten</div>
-            <div class="small text-secondary">AR, Foto Blue y Progresivos</div>
+            <div class="fw-extrabold fs-4 text-dark">Foto Blue</div>
+            <div class="small text-secondary">Foto Blue y Progresivos</div>
           </div>
           <div class="col-4 border-start border-secondary border-opacity-25 ps-3">
             <div class="fw-extrabold fs-4 text-dark"><?= e((string) config('instagram.followers')) ?></div>
@@ -62,7 +62,7 @@
               <i class="bi bi-layers-fill fs-5"></i>
             </div>
             <div>
-              <strong class="d-block text-dark small">Progresivos Keten & Blue</strong>
+              <strong class="d-block text-dark small">Foto Blue & Progresivos</strong>
               <span class="text-secondary" style="font-size: 0.78rem;">Gama Baja, Media y Alta • Protección UV</span>
             </div>
           </div>
@@ -159,16 +159,16 @@
   </div>
 </section>
 
-<!-- Laboratorio Interactivo EOS (AR Blue / Foto Blue / Progresivos Keten Baja, Media y Alta) -->
+<!-- Laboratorio Interactivo EOS (Foto Blue / Progresivos Baja, Media y Alta) -->
 <section class="eos-simulator-section py-5" id="simulador">
   <div class="container py-lg-4">
     <div class="text-center mx-auto mb-5" style="max-width: 780px;">
       <span class="eos-eyebrow eos-eyebrow-dark">Laboratorio Interactivo EOS</span>
       <h2 class="eos-section-title text-white mt-2">
-        Compara nuestros <span class="serif-accent text-white">Cristales Digitales y Progresivos Keten</span>
+        Compara nuestros <span class="serif-accent text-white">Cristales Foto Blue y Progresivos</span>
       </h2>
       <p class="text-secondary-light mb-0">
-        Prueba el comportamiento de los filtros <strong>AR Blue</strong> y <strong>Foto Blue</strong> ante el sol UV, o compara la amplitud del campo visual de los <strong>Progresivos Keten en Gama Baja, Media y Alta</strong>.
+        Prueba el comportamiento de los cristales <strong>Foto Blue</strong> ante el sol UV, o desliza para comparar la amplitud visual de los <strong>Progresivos en Gama Baja, Media y Alta</strong>.
       </p>
     </div>
 
@@ -181,7 +181,7 @@
       <!-- Panel de Controles -->
       <div class="col-lg-5">
         <div class="simulator-panel h-100 p-4 rounded-4 d-flex flex-column justify-content-between gap-4">
-          <!-- 1. Seleccion de Tecnologia (4 Botones Unificados) -->
+          <!-- 1. Seleccion de Tecnologia -->
           <div>
             <label class="form-label text-white fw-bold small text-uppercase tracking-wider mb-3 d-flex align-items-center gap-2">
               <i class="bi bi-layers text-white"></i>
@@ -192,7 +192,7 @@
               <?php foreach ($lenses as $slug => $lens): ?>
                 <button
                   type="button"
-                  class="lens-selector-btn text-start p-3 rounded-3 d-flex align-items-center gap-3 <?= $slug === 'ar-blue' ? 'active' : '' ?>"
+                  class="lens-selector-btn text-start p-3 rounded-3 d-flex align-items-center gap-3 <?= $slug === 'foto-blue' ? 'active' : '' ?>"
                   data-lens="<?= e($slug) ?>"
                 >
                   <div class="lens-selector-icon">
@@ -207,7 +207,7 @@
             </div>
           </div>
 
-          <!-- 2. Slider Dinamico (Radiacion UV o Nivel de Gama Progresivo Keten) -->
+          <!-- 2. Slider Dinamico (Radiacion UV o Nivel de Gama Progresivo) -->
           <div>
             <div class="d-flex justify-content-between align-items-center mb-2">
               <label for="sunSlider" class="form-label text-white fw-bold small text-uppercase tracking-wider mb-0 d-flex align-items-center gap-2">
@@ -215,11 +215,11 @@
                 <span id="sliderControlLabel">2. Exposición Solar Exterior (UV)</span>
               </label>
               <span class="badge rounded-pill bg-white bg-opacity-10 text-white border border-secondary" id="sunValueLabel">
-                Interior (20% UV)
+                Exterior Templado (60% UV)
               </span>
             </div>
 
-            <input type="range" class="form-range eos-range" id="sunSlider" min="0" max="100" value="20">
+            <input type="range" class="form-range eos-range" id="sunSlider" min="0" max="100" value="60">
 
             <div class="d-flex justify-content-between small text-secondary-light mt-1" style="font-size: 0.78rem;">
               <span id="sliderTickLeft" role="button" data-slider-jump="15"><i class="bi bi-building me-1"></i>Oficina / Noche</span>
@@ -231,16 +231,16 @@
           <!-- Especificaciones Dinamicas -->
           <div class="simulator-specs-card p-3 rounded-3">
             <h4 class="h6 fw-bold text-white mb-2" id="specTitle">
-              <?= e($lenses['ar-blue']['full_title']) ?>
+              <?= e($lenses['foto-blue']['full_title']) ?>
             </h4>
             <p class="small text-secondary-light mb-3" id="specDesc">
-              <?= e($lenses['ar-blue']['description']) ?>
+              <?= e($lenses['foto-blue']['description']) ?>
             </p>
 
             <div class="d-flex flex-column gap-2 mb-3">
               <div>
                 <div class="d-flex justify-content-between small text-white mb-1">
-                  <span id="meterLabel1"><?= e($lenses['ar-blue']['metric_labels']['m1']) ?></span>
+                  <span id="meterLabel1"><?= e($lenses['foto-blue']['metric_labels']['m1']) ?></span>
                   <span id="meterBlueVal">95%</span>
                 </div>
                 <div class="progress eos-progress">
@@ -250,7 +250,7 @@
 
               <div>
                 <div class="d-flex justify-content-between small text-white mb-1">
-                  <span id="meterLabel2"><?= e($lenses['ar-blue']['metric_labels']['m2']) ?></span>
+                  <span id="meterLabel2"><?= e($lenses['foto-blue']['metric_labels']['m2']) ?></span>
                   <span id="meterGlareVal">92%</span>
                 </div>
                 <div class="progress eos-progress">
@@ -260,17 +260,17 @@
 
               <div>
                 <div class="d-flex justify-content-between small text-white mb-1">
-                  <span id="meterLabel3"><?= e($lenses['ar-blue']['metric_labels']['m3']) ?></span>
-                  <span id="meterPhotoVal">15%</span>
+                  <span id="meterLabel3"><?= e($lenses['foto-blue']['metric_labels']['m3']) ?></span>
+                  <span id="meterPhotoVal">98%</span>
                 </div>
                 <div class="progress eos-progress">
-                  <div class="progress-bar bg-light" id="meterPhoto" role="progressbar" style="width: 15%"></div>
+                  <div class="progress-bar bg-light" id="meterPhoto" role="progressbar" style="width: 98%"></div>
                 </div>
               </div>
             </div>
 
             <a
-              href="<?= e(wa_link($lenses['ar-blue']['wa_message'])) ?>"
+              href="<?= e(wa_link($lenses['foto-blue']['wa_message'])) ?>"
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn-light fw-bold w-100 rounded-pill d-inline-flex align-items-center justify-content-center gap-2"
@@ -294,7 +294,7 @@
               </div>
               <div class="stage-condition-pill keten-stage-pill d-none align-items-center gap-2" id="ketenStageBadge">
                 <i class="bi bi-layers-half text-white"></i>
-                <span id="ketenStageText">Corredor Progresivo Keten</span>
+                <span id="ketenStageText">Corredor Progresivo</span>
               </div>
             </div>
 
@@ -303,7 +303,7 @@
               <div class="lens-glass" id="leftLens">
                 <div class="lens-glare-layer" id="leftGlare"></div>
                 <div class="lens-blue-coating" id="leftReflex"></div>
-                <!-- Overlay de Geometria Progresiva Keten (Izquierdo) -->
+                <!-- Overlay de Geometria Progresiva (Izquierdo) -->
                 <div class="keten-progressive-overlay d-none" id="leftKetenOverlay">
                   <div class="keten-aberration keten-aberration-left"></div>
                   <div class="keten-aberration keten-aberration-right"></div>
@@ -319,7 +319,7 @@
               <div class="lens-glass" id="rightLens">
                 <div class="lens-glare-layer" id="rightGlare"></div>
                 <div class="lens-blue-coating" id="rightReflex"></div>
-                <!-- Overlay de Geometria Progresiva Keten (Derecho) -->
+                <!-- Overlay de Geometria Progresiva (Derecho) -->
                 <div class="keten-progressive-overlay d-none" id="rightKetenOverlay">
                   <div class="keten-aberration keten-aberration-left"></div>
                   <div class="keten-aberration keten-aberration-right"></div>
@@ -333,7 +333,7 @@
               </div>
             </div>
 
-            <!-- Leyenda interactiva de zonas cuando se activa Progresivo Keten -->
+            <!-- Leyenda interactiva de zonas cuando se activa Progresivo -->
             <div class="keten-legend-bar d-none flex-wrap justify-content-center align-items-center gap-3 mb-2 px-3 py-2 rounded-pill" id="ketenLegendBar">
               <span class="small text-white d-inline-flex align-items-center gap-1">
                 <i class="bi bi-check-circle-fill text-white"></i>
@@ -348,7 +348,7 @@
 
             <div class="stage-caption-bar d-flex align-items-center gap-2">
               <i class="bi bi-info-circle-fill text-white flex-shrink-0"></i>
-              <span id="stageCaption"><?= e($lenses['ar-blue']['caption']) ?></span>
+              <span id="stageCaption"><?= e($lenses['foto-blue']['caption']) ?></span>
             </div>
           </div>
         </div>
@@ -798,7 +798,7 @@
                 <select class="form-select" id="serviceType" name="service_type" required>
                   <option value="Examen Optométrico (Sin costo por compra en tienda)">Examen Optométrico — Sin costo al comprar en tienda (Lunes a Sábado)</option>
                   <option value="Consulta Oftalmológica (Previa Cita)">Consulta Oftalmológica — Previa Cita (Lunes y Miércoles)</option>
-                  <option value="Cotizar Cristales (AR Blue / Foto Blue / Progresivos Keten)">Cotizar AR Blue, Foto Blue o Progresivos Keten (Lunes a Sábado)</option>
+                  <option value="Cotizar Cristales (Foto Blue / Progresivos)">Cotizar Foto Blue o Cristales Progresivos (Lunes a Sábado)</option>
                   <option value="Ya tengo mi fórmula y quiero cotizar lentes">Ya tengo mi fórmula — Quiero cotizar (Lunes a Sábado)</option>
                   <option value="Consultar catálogo de monturas disponibles">Consultar catálogo de monturas (Lunes a Sábado)</option>
                 </select>
@@ -825,7 +825,7 @@
 
             <div class="mb-4">
               <label for="clientNotes" class="form-label fw-bold small">Observaciones o detalles de tu fórmula (Opcional)</label>
-              <textarea class="form-control" id="clientNotes" name="client_notes" rows="2" maxlength="350" placeholder="Ej. Deseo cotizar Progresivos Keten o cristales con filtro azul..."></textarea>
+              <textarea class="form-control" id="clientNotes" name="client_notes" rows="2" maxlength="350" placeholder="Ej. Deseo cotizar Cristales Progresivos o Foto Blue..."></textarea>
             </div>
 
             <button type="submit" id="bookingSubmitBtn" class="btn btn-eos-primary btn-lg w-100 rounded-pill d-inline-flex align-items-center justify-content-center gap-2">

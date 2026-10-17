@@ -17,12 +17,12 @@ class Faq
                 'answer'   => 'El Examen Optométrico es Sin Costo solo y cuando realices la compra de tus lentes en nuestra tienda. Atendemos de lunes a sábado en el turno de la tarde.',
             ],
             [
-                'question' => '¿Qué diferencias existen entre los cristales Progresivos Keten de Gama Baja, Media y Alta?',
-                'answer'   => 'Los Progresivos Keten te permiten enfocar de lejos, distancia intermedia (computadora) y cerca sin líneas visibles. La Gama Baja ofrece un corredor progresivo estándar; la Gama Media amplía la zona intermedia disminuyendo las aberraciones laterales; y la Gama Alta (tecnología digital FreeForm HD) proporciona el campo visual más amplio y nítido con adaptación inmediata.',
+                'question' => '¿Qué diferencias existen entre los Cristales Progresivos de Gama Baja, Media y Alta?',
+                'answer'   => 'Los Cristales Progresivos te permiten enfocar de lejos, distancia intermedia (computadora) y cerca sin líneas visibles. La Gama Baja ofrece un corredor progresivo clásico funcional; la Gama Media amplía la zona intermedia disminuyendo las distorsiones laterales; y la Gama Alta (tecnología digital FreeForm HD) proporciona visión panorámica y adaptación inmediata.',
             ],
             [
-                'question' => '¿Cuál es la diferencia entre los cristales Antirreflejo Blue y Foto Blue?',
-                'answer'   => 'El cristal Antirreflejo Blue es transparente y bloquea la luz azul nociva de pantallas (computadoras, celulares y televisores) además de reducir reflejos nocturnos. El cristal Foto Blue incluye esa misma protección contra pantallas pero además es fotocromático: se oscurece automáticamente al exponerse a los rayos UV del sol en exteriores.',
+                'question' => '¿Qué beneficios ofrece el cristal Foto Blue?',
+                'answer'   => 'El cristal Foto Blue combina protección contra la luz azul nociva de pantallas (computadoras, celulares y televisores) en interiores con tecnología fotocromática que oscurece automáticamente el lente al exponerse a los rayos UV del sol en exteriores.',
             ],
             [
                 'question' => '¿Qué días y en qué turno se realizan las consultas y atenciones?',
@@ -34,7 +34,7 @@ class Faq
             ],
             [
                 'question' => '¿Puedo llevar mi propia fórmula médica para elaborar mis cristales?',
-                'answer'   => 'Sí. Si ya cuentas con una fórmula emitida recientemente por tu especialista, elaboramos y adaptamos tus cristales de visión sencilla, bifocales o Progresivos Keten (Baja, Media o Alta Gama).',
+                'answer'   => 'Sí. Si ya cuentas con una fórmula emitida recientemente por tu especialista, elaboramos y adaptamos tus cristales de visión sencilla, bifocales o Progresivos (Baja, Media o Alta Gama).',
             ],
         ];
     }
