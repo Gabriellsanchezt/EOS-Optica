@@ -295,27 +295,101 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSimulator();
   }
 
-  // 2. Filtro Dinamico del Catalogo de Monturas y Modal de Ficha Tecnica
+  // 2. Filtro Dinamico del Catalogo (6 visibles + fila difuminada con boton Ver Mas)
   const filterBtns = document.querySelectorAll('.eos-filter-btn');
-  const catalogItems = document.querySelectorAll('.catalog-item');
+  const catalogItems = Array.from(document.querySelectorAll('.catalog-item'));
+  const catalogFadeOverlay = document.getElementById('catalogFadeOverlay');
+  const catalogExpandBtn = document.getElementById('catalogExpandBtn');
+  const catalogCollapseWrap = document.getElementById('catalogCollapseWrap');
+  const catalogCollapseBtn = document.getElementById('catalogCollapseBtn');
+
+  let currentCatalogCategory = 'all';
+  let isCatalogExpanded = false;
+  const INITIAL_VISIBLE_COUNT = 6;
+  const BLUR_PREVIEW_COUNT = 3;
+
+  function renderCatalogGrid() {
+    const matchingItems = [];
+
+    catalogItems.forEach(item => {
+      const itemCat = item.getAttribute('data-category') || '';
+      const itemCats = itemCat.split(/\s+/);
+      const matches =
+        currentCatalogCategory === 'all' ||
+        itemCat === currentCatalogCategory ||
+        itemCats.includes(currentCatalogCategory);
+
+      item.classList.remove('catalog-item-blurred');
+      if (matches) {
+        matchingItems.push(item);
+      } else {
+        item.classList.add('d-none');
+      }
+    });
+
+    if (isCatalogExpanded || matchingItems.length <= INITIAL_VISIBLE_COUNT) {
+      matchingItems.forEach(item => item.classList.remove('d-none'));
+      if (catalogFadeOverlay) {
+        catalogFadeOverlay.classList.add('d-none');
+        catalogFadeOverlay.classList.remove('d-flex');
+      }
+      if (catalogCollapseWrap) {
+        if (matchingItems.length > INITIAL_VISIBLE_COUNT) {
+          catalogCollapseWrap.classList.remove('d-none');
+        } else {
+          catalogCollapseWrap.classList.add('d-none');
+        }
+      }
+    } else {
+      matchingItems.forEach((item, idx) => {
+        if (idx < INITIAL_VISIBLE_COUNT) {
+          item.classList.remove('d-none');
+        } else if (idx < INITIAL_VISIBLE_COUNT + BLUR_PREVIEW_COUNT) {
+          item.classList.remove('d-none');
+          item.classList.add('catalog-item-blurred');
+        } else {
+          item.classList.add('d-none');
+        }
+      });
+
+      if (catalogFadeOverlay) {
+        catalogFadeOverlay.classList.remove('d-none');
+        catalogFadeOverlay.classList.add('d-flex');
+      }
+      if (catalogCollapseWrap) {
+        catalogCollapseWrap.classList.add('d-none');
+      }
+    }
+  }
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      const category = btn.getAttribute('data-filter') || 'all';
-      catalogItems.forEach(item => {
-        const itemCat = item.getAttribute('data-category') || '';
-        const itemCats = itemCat.split(/\s+/);
-        if (category === 'all' || itemCat === category || itemCats.includes(category)) {
-          item.classList.remove('d-none');
-        } else {
-          item.classList.add('d-none');
-        }
-      });
+      currentCatalogCategory = btn.getAttribute('data-filter') || 'all';
+      renderCatalogGrid();
     });
   });
+
+  if (catalogExpandBtn) {
+    catalogExpandBtn.addEventListener('click', () => {
+      isCatalogExpanded = true;
+      renderCatalogGrid();
+    });
+  }
+
+  if (catalogCollapseBtn) {
+    catalogCollapseBtn.addEventListener('click', () => {
+      isCatalogExpanded = false;
+      renderCatalogGrid();
+      const catalogSection = document.getElementById('catalogo');
+      if (catalogSection) {
+        catalogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
+  renderCatalogGrid();
 
   // Modal de Ficha Tecnica
   const catalogDataEl = document.getElementById('eosCatalogDataJson');

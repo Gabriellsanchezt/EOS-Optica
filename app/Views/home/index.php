@@ -389,60 +389,94 @@
       <?php endforeach; ?>
     </div>
 
-    <!-- Grid de Monturas -->
-    <div class="row g-4" id="catalogGrid">
-      <?php foreach ($catalog as $item): ?>
-        <div class="col-md-6 col-lg-4 catalog-item" data-category="<?= e($item['category']) ?>">
-          <div class="card eos-frame-card h-100 border rounded-4 overflow-hidden shadow-sm">
-            <div class="frame-img-container position-relative">
-              <img
-                src="<?= e($item['image']) ?>"
-                alt="<?= e($item['name']) ?>"
-                class="card-img-top frame-img"
-                loading="lazy"
-              >
-              <span class="badge <?= e($item['badge_class']) ?> position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
-                <?= e($item['badge']) ?>
-              </span>
-            </div>
-
-            <div class="card-body p-4 d-flex flex-column">
-              <div class="text-secondary fw-bold text-uppercase small mb-1" style="font-size: 0.75rem; letter-spacing: 0.06em;">
-                <?= e($item['material']) ?>
+    <!-- Grid de Monturas con Vista Previa de 6 + Efecto Difuminado (Ver Mas) -->
+    <div class="catalog-showcase-wrapper position-relative" id="catalogShowcaseWrapper">
+      <div class="row g-4" id="catalogGrid">
+        <?php foreach ($catalog as $idx => $item): ?>
+          <?php
+            $initialStateClass = '';
+            if ($idx >= 6 && $idx < 9) {
+                $initialStateClass = 'catalog-item-blurred';
+            } elseif ($idx >= 9) {
+                $initialStateClass = 'd-none';
+            }
+          ?>
+          <div class="col-md-6 col-lg-4 catalog-item <?= $initialStateClass ?>" data-category="<?= e($item['category']) ?>">
+            <div class="card eos-frame-card h-100 border rounded-4 overflow-hidden shadow-sm">
+              <div class="frame-img-container position-relative">
+                <img
+                  src="<?= e($item['image']) ?>"
+                  alt="<?= e($item['name']) ?>"
+                  class="card-img-top frame-img"
+                  loading="lazy"
+                >
+                <span class="badge <?= e($item['badge_class']) ?> position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
+                  <?= e($item['badge']) ?>
+                </span>
               </div>
-              <h3 class="h5 fw-bold text-dark mb-2"><?= e($item['name']) ?></h3>
-              <p class="text-secondary small mb-4 flex-grow-1"><?= e($item['description']) ?></p>
 
-              <div class="pt-3 border-top mt-auto">
-                <div class="d-flex align-items-center gap-2 small text-dark fw-semibold mb-3">
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span><?= e($item['compatibility']) ?></span>
+              <div class="card-body p-4 d-flex flex-column">
+                <div class="text-secondary fw-bold text-uppercase small mb-1" style="font-size: 0.75rem; letter-spacing: 0.06em;">
+                  <?= e($item['material']) ?>
                 </div>
+                <h3 class="h5 fw-bold text-dark mb-2"><?= e($item['name']) ?></h3>
+                <p class="text-secondary small mb-4 flex-grow-1"><?= e($item['description']) ?></p>
 
-                <div class="d-flex gap-2">
-                  <button
-                    type="button"
-                    class="btn btn-eos-outline btn-sm rounded-3 px-3 d-inline-flex align-items-center justify-content-center gap-1 btn-frame-spec"
-                    data-frame-id="<?= (int) $item['id'] ?>"
-                  >
-                    <i class="bi bi-arrows-angle-expand"></i>
-                    <span>Ficha</span>
-                  </button>
-                  <a
-                    href="<?= e(wa_link($item['wa_query'])) ?>"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-eos-wa-subtle flex-grow-1 rounded-3 d-inline-flex align-items-center justify-content-center gap-2"
-                  >
-                    <i class="bi bi-whatsapp"></i>
-                    <span>Consultar</span>
-                  </a>
+                <div class="pt-3 border-top mt-auto">
+                  <div class="d-flex align-items-center gap-2 small text-dark fw-semibold mb-3">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span><?= e($item['compatibility']) ?></span>
+                  </div>
+
+                  <div class="d-flex gap-2">
+                    <button
+                      type="button"
+                      class="btn btn-eos-outline btn-sm rounded-3 px-3 d-inline-flex align-items-center justify-content-center gap-1 btn-frame-spec"
+                      data-frame-id="<?= (int) $item['id'] ?>"
+                    >
+                      <i class="bi bi-arrows-angle-expand"></i>
+                      <span>Ficha</span>
+                    </button>
+                    <a
+                      href="<?= e(wa_link($item['wa_query'])) ?>"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-eos-wa-subtle flex-grow-1 rounded-3 d-inline-flex align-items-center justify-content-center gap-2"
+                    >
+                      <i class="bi bi-whatsapp"></i>
+                      <span>Consultar</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
+      </div>
+
+      <!-- Overlay Difuminado con Boton Ver Mas -->
+      <div class="catalog-fade-overlay d-flex flex-column align-items-center justify-content-end pb-4" id="catalogFadeOverlay">
+        <button
+          type="button"
+          class="btn btn-eos-primary btn-lg rounded-pill px-5 py-3 shadow-lg d-inline-flex align-items-center gap-2"
+          id="catalogExpandBtn"
+        >
+          <i class="bi bi-grid-3x3-gap-fill"></i>
+          <span>Ver más del catálogo</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Boton para contraer catalogo cuando esta desplegado -->
+    <div class="text-center mt-5 d-none" id="catalogCollapseWrap">
+      <button
+        type="button"
+        class="btn btn-eos-outline rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2"
+        id="catalogCollapseBtn"
+      >
+        <i class="bi bi-chevron-up"></i>
+        <span>Mostrar menos monturas</span>
+      </button>
     </div>
   </div>
 </section>
