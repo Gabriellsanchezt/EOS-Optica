@@ -1,6 +1,6 @@
 # EOS Óptica — Plataforma Clínica Visual, Simulador Óptico & Sistema de Citas
 
-> **Portal Web Clínico-Boutique y Sistema de Agendamiento en Arquitectura MVC con PHP 8 & Bootstrap 5**  
+> **Portal Web Oftalmológico y Sistema de Agendamiento en Arquitectura MVC con PHP 8 & Bootstrap 5**  
 > Optometría Computarizada, Cristales Antirreflejo Blue & Foto Blue, Catálogo de Monturas y Consulta Oftalmológica Integral.  
 > **Ubicación:** Carrera 19 esquina con Calle 35, Edificio Carache, PB Locales 3 y 4, Barquisimeto, Estado Lara, Venezuela.  
 > **WhatsApp Oficial:** [+58 412-9515387](https://wa.me/584129515387)  
