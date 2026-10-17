@@ -623,6 +623,32 @@ body {
   color: var(--eos-white);
 }
 
+.eos-subfilter-bar {
+  background-color: var(--eos-gray-100) !important;
+  border-color: var(--eos-gray-200) !important;
+}
+
+.eos-subfilter-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--eos-gray-600);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.eos-subfilter-btn:hover {
+  color: var(--eos-black);
+}
+
+.eos-subfilter-btn.active {
+  background-color: var(--eos-white);
+  color: var(--eos-black);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
 .frame-img-container {
   height: 165px;
   overflow: hidden;

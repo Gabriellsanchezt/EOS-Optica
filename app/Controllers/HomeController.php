@@ -21,6 +21,7 @@ class HomeController extends Controller
         $lenses        = LensTechnology::all();
         $catalog       = Catalog::all();
         $categories    = Catalog::getCategories();
+        $subfilters    = Catalog::getSubfilters();
         $ophthalmology = Ophthalmology::getInfo();
         $faqs          = Faq::all();
 
@@ -31,6 +32,7 @@ class HomeController extends Controller
             'lenses'        => $lenses,
             'catalog'       => $catalog,
             'categories'    => $categories,
+            'subfilters'    => $subfilters,
             'ophthalmology' => $ophthalmology,
             'faqs'          => $faqs,
         ]);
@@ -41,6 +43,7 @@ class HomeController extends Controller
         $this->json([
             'status'     => 'success',
             'categories' => Catalog::getCategories(),
+            'subfilters' => Catalog::getSubfilters(),
             'data'       => Catalog::all(),
         ]);
     }

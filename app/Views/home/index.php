@@ -375,18 +375,34 @@
       <?= json_encode($catalog, JSON_UNESCAPED_UNICODE) ?>
     </script>
 
-    <!-- Botones de Filtro -->
-    <div class="d-flex justify-content-center flex-wrap gap-2 mb-5" role="tablist">
+    <!-- 4 Secciones Principales del Catalogo -->
+    <div class="d-flex justify-content-center flex-wrap gap-2 mb-3" role="tablist" aria-label="Secciones del catálogo">
       <?php foreach ($categories as $index => $cat): ?>
         <button
           type="button"
           class="btn eos-filter-btn rounded-pill d-inline-flex align-items-center gap-2 <?= $index === 0 ? 'active' : '' ?>"
-          data-filter="<?= e($cat['slug']) ?>"
+          data-filter-section="<?= e($cat['slug']) ?>"
         >
           <i class="bi <?= e($cat['icon']) ?>"></i>
           <span><?= e($cat['label']) ?></span>
         </button>
       <?php endforeach; ?>
+    </div>
+
+    <!-- Sub-filtros de Material / Tipo dentro de cada seccion -->
+    <div class="d-flex justify-content-center mb-4">
+      <div class="eos-subfilter-bar d-inline-flex flex-wrap justify-content-center align-items-center gap-1 p-1 rounded-pill border bg-light" role="group" aria-label="Filtros por tipo de montura">
+        <?php foreach ($subfilters as $subIdx => $sub): ?>
+          <button
+            type="button"
+            class="btn btn-sm eos-subfilter-btn rounded-pill d-inline-flex align-items-center gap-1 <?= $subIdx === 0 ? 'active' : '' ?>"
+            data-filter-sub="<?= e($sub['slug']) ?>"
+          >
+            <i class="bi <?= e($sub['icon']) ?>"></i>
+            <span><?= e($sub['label']) ?></span>
+          </button>
+        <?php endforeach; ?>
+      </div>
     </div>
 
     <!-- Grid de Monturas (4 por fila, compacto, con fila final difuminada y boton Ver Mas) -->
@@ -401,7 +417,12 @@
                 $initialStateClass = 'd-none';
             }
           ?>
-          <div class="col-sm-6 col-lg-3 catalog-item <?= $initialStateClass ?>" data-category="<?= e($item['category']) ?>">
+          <div
+            class="col-sm-6 col-lg-3 catalog-item <?= $initialStateClass ?>"
+            data-category="<?= e($item['category']) ?>"
+            data-section="<?= e($item['section']) ?>"
+            data-subfilter="<?= e($item['subfilter']) ?>"
+          >
             <div class="card eos-frame-card h-100 border rounded-4 overflow-hidden shadow-sm">
               <div class="frame-img-container position-relative">
                 <img

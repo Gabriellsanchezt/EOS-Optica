@@ -295,15 +295,17 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSimulator();
   }
 
-  // 2. Filtro Dinamico del Catalogo (6 visibles + fila difuminada con boton Ver Mas)
-  const filterBtns = document.querySelectorAll('.eos-filter-btn');
+  // 2. Filtro Dinamico del Catalogo (4 Secciones + Sub-filtros Acetato / De Sol / Metalicos)
+  const sectionBtns = document.querySelectorAll('[data-filter-section]');
+  const subfilterBtns = document.querySelectorAll('[data-filter-sub]');
   const catalogItems = Array.from(document.querySelectorAll('.catalog-item'));
   const catalogFadeOverlay = document.getElementById('catalogFadeOverlay');
   const catalogExpandBtn = document.getElementById('catalogExpandBtn');
   const catalogCollapseWrap = document.getElementById('catalogCollapseWrap');
   const catalogCollapseBtn = document.getElementById('catalogCollapseBtn');
 
-  let currentCatalogCategory = 'all';
+  let currentCatalogSection = 'all';
+  let currentCatalogSubfilter = 'all';
   let isCatalogExpanded = false;
   const INITIAL_VISIBLE_COUNT = 4;
   const BLUR_PREVIEW_COUNT = 4;
@@ -312,15 +314,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const matchingItems = [];
 
     catalogItems.forEach(item => {
-      const itemCat = item.getAttribute('data-category') || '';
-      const itemCats = itemCat.split(/\s+/);
-      const matches =
-        currentCatalogCategory === 'all' ||
-        itemCat === currentCatalogCategory ||
-        itemCats.includes(currentCatalogCategory);
+      const itemSecs = (item.getAttribute('data-section') || '').split(/\s+/);
+      const itemSubs = (item.getAttribute('data-subfilter') || '').split(/\s+/);
+
+      const matchesSection =
+        currentCatalogSection === 'all' || itemSecs.includes(currentCatalogSection);
+      const matchesSub =
+        currentCatalogSubfilter === 'all' || itemSubs.includes(currentCatalogSubfilter);
 
       item.classList.remove('catalog-item-blurred');
-      if (matches) {
+      if (matchesSection && matchesSub) {
         matchingItems.push(item);
       } else {
         item.classList.add('d-none');
@@ -362,11 +365,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  filterBtns.forEach(btn => {
+  sectionBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      sectionBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentCatalogCategory = btn.getAttribute('data-filter') || 'all';
+      currentCatalogSection = btn.getAttribute('data-filter-section') || 'all';
+      renderCatalogGrid();
+    });
+  });
+
+  subfilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      subfilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCatalogSubfilter = btn.getAttribute('data-filter-sub') || 'all';
       renderCatalogGrid();
     });
   });
