@@ -461,7 +461,7 @@
       <div class="modal-body p-4">
         <div class="row g-4 align-items-center">
           <div class="col-md-5">
-            <img src="" alt="" id="modalFrameImg" class="img-fluid rounded-3 border w-100" style="height: 260px; object-fit: cover;">
+            <img src="" alt="" id="modalFrameImg" class="img-fluid rounded-3 border w-100 bg-white p-3" style="height: 260px; object-fit: contain;">
           </div>
           <div class="col-md-7">
             <span class="badge bg-dark text-white rounded-pill mb-2" id="modalFrameBadge"></span>

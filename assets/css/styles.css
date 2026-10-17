@@ -626,12 +626,16 @@ body {
 .frame-img-container {
   height: 235px;
   overflow: hidden;
+  background-color: var(--eos-white);
+  border-bottom: 1px solid var(--eos-gray-200);
 }
 
 .frame-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 0.75rem 1rem;
+  background-color: var(--eos-white);
   transition: transform 0.45s ease;
 }
 

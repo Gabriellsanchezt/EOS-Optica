@@ -306,8 +306,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const category = btn.getAttribute('data-filter') || 'all';
       catalogItems.forEach(item => {
-        const itemCat = item.getAttribute('data-category');
-        if (category === 'all' || itemCat === category) {
+        const itemCat = item.getAttribute('data-category') || '';
+        const itemCats = itemCat.split(/\s+/);
+        if (category === 'all' || itemCat === category || itemCats.includes(category)) {
           item.classList.remove('d-none');
         } else {
           item.classList.add('d-none');
