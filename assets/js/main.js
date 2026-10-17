@@ -5,6 +5,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const waNumber = document.body.getAttribute('data-wa-number') || '584129515387';
 
+  // 0. Cerrar automaticamente el menu hamburguesa en moviles al pulsar un enlace
+  const navCollapseEl = document.getElementById('eosNavbarContent');
+  if (navCollapseEl) {
+    navCollapseEl.querySelectorAll('a.nav-link, a.btn').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navCollapseEl.classList.contains('show') && window.bootstrap) {
+          const bsCollapse = window.bootstrap.Collapse.getInstance(navCollapseEl) || new window.bootstrap.Collapse(navCollapseEl, { toggle: false });
+          bsCollapse.hide();
+        }
+      });
+    });
+  }
+
   // 1. Simulador Interactivo de Cristales (Datos cargados desde el Modelo MVC)
   const lensDataEl = document.getElementById('eosLensDataJson');
   let lensData = {};

@@ -711,7 +711,7 @@ body {
   opacity: 1;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments (Tablets, Móviles y Pantallas Compactas) */
 @media (max-width: 991.98px) {
   .hero-float-card {
     position: static;
@@ -721,11 +721,72 @@ body {
   .hero-main-img {
     height: 360px;
   }
+
+  .eos-navbar .navbar-collapse {
+    background: var(--eos-white);
+    padding: 1rem 0 0.5rem;
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--eos-gray-200);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .eos-topbar {
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .eos-topbar .container {
+    justify-content: center !important;
+  }
+
+  .eos-hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-main-img {
+    height: 300px;
+  }
+
+  .simulator-stage,
+  .stage-background {
+    min-height: 380px;
+  }
+
+  .floating-wa {
+    width: 52px;
+    height: 52px;
+    bottom: 18px;
+    right: 18px;
+    font-size: 1.45rem;
+  }
+
+  .floating-wa-tooltip {
+    display: none;
+  }
 }
 
 @media (max-width: 575.98px) {
   .lens-glass {
-    width: 140px;
-    height: 112px;
+    width: 132px;
+    height: 104px;
+    border-width: 4px;
+    border-radius: 24px 24px 34px 34px;
+  }
+
+  .glasses-nose-bridge {
+    width: 20px;
+    height: 7px;
+    margin-top: -24px;
+  }
+
+  .eos-hero .btn-lg {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .eos-filter-btn {
+    font-size: 0.82rem;
+    padding: 0.48rem 0.95rem;
   }
 }
